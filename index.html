@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yunus Emre — Systems Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e0e;
+    --bg2: #161616;
+    --bg3: #1e1e1e;
+    --border: #2a2a2a;
+    --amber: #d4860a;
+    --amber-bright: #f0a020;
+    --amber-dim: #7a4d08;
+    --text: #c8c0a8;
+    --text-dim: #5a5448;
+    --text-muted: #3a3530;
+    --green: #4a8c3f;
+    --green-bright: #6db362;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 14px;
+    line-height: 1.7;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Scanline overlay */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0,0,0,0.04) 2px,
+      rgba(0,0,0,0.04) 4px
+    );
+    pointer-events: none;
+    z-index: 100;
+  }
+
+  /* Grain texture */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 99;
+    opacity: 0.6;
+  }
+
+  .container {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Top bar */
+  .topbar {
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    background: rgba(14,14,14,0.92);
+    backdrop-filter: blur(4px);
+    z-index: 50;
+  }
+
+  .topbar .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .topbar-id {
+    font-size: 12px;
+    color: var(--amber);
+    letter-spacing: 0.08em;
+  }
+
+  .topbar-id .prompt { color: var(--text-dim); }
+
+  .nav {
+    display: flex;
+    gap: 2rem;
+    list-style: none;
+  }
+
+  .nav a {
+    color: var(--text-dim);
+    text-decoration: none;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    transition: color 0.15s;
+  }
+
+  .nav a:hover { color: var(--amber-bright); }
+
+  /* Hero */
+  .hero {
+    padding: 5rem 0 4rem;
+    position: relative;
+  }
+
+  .hero-tag {
+    font-size: 11px;
+    color: var(--amber-dim);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .hero-tag::before {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--amber-dim);
+  }
+
+  .hero h1 {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: clamp(2.8rem, 6vw, 4.8rem);
+    font-weight: 300;
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: #e8dfc0;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero h1 .accent {
+    color: var(--amber);
+    font-weight: 500;
+  }
+
+  .hero-sub {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-top: 1.75rem;
+    max-width: 480px;
+    line-height: 1.8;
+    font-style: italic;
+  }
+
+  .hero-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  .badge {
+    font-size: 11px;
+    padding: 3px 10px;
+    border: 1px solid var(--border);
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+    background: var(--bg2);
+  }
+
+  .badge.active {
+    border-color: var(--amber-dim);
+    color: var(--amber);
+    background: rgba(212,134,10,0.06);
+  }
+
+  /* Blink cursor */
+  .cursor {
+    display: inline-block;
+    width: 0.55em;
+    height: 0.9em;
+    background: var(--amber);
+    margin-left: 4px;
+    vertical-align: -0.1em;
+    animation: blink 1.1s step-end infinite;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  /* Divider */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0;
+  }
+
+  /* Section */
+  .section {
+    padding: 4rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .section:last-child { border-bottom: none; }
+
+  .section-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 2.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .section-label::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* Projects */
+  .project-list { display: flex; flex-direction: column; gap: 0; }
+
+  .project {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 1rem;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--text-muted);
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.1s;
+    position: relative;
+  }
+
+  .project:last-child { border-bottom: none; }
+
+  .project:hover .project-name { color: var(--amber-bright); }
+  .project:hover .proj-arrow { opacity: 1; transform: translateX(0); }
+
+  .project-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: #d8cfa8;
+    margin-bottom: 0.3rem;
+    transition: color 0.15s;
+  }
+
+  .project-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.6;
+    max-width: 520px;
+  }
+
+  .project-meta {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-end;
+  }
+
+  .proj-lang {
+    font-size: 11px;
+    color: var(--green-bright);
+    letter-spacing: 0.04em;
+  }
+
+  .proj-status {
+    font-size: 10px;
+    color: var(--amber-dim);
+    letter-spacing: 0.08em;
+    border: 1px solid var(--amber-dim);
+    padding: 1px 6px;
+  }
+
+  .proj-arrow {
+    font-size: 16px;
+    color: var(--amber);
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.15s, transform 0.15s;
+    align-self: center;
+  }
+
+  /* Skills */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+  }
+
+  .skill-cell {
+    background: var(--bg);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .skill-cell-label {
+    font-size: 10px;
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-cell-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .skill-item {
+    font-size: 13px;
+    color: var(--text);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .skill-item::before {
+    content: '─';
+    color: var(--amber-dim);
+    font-size: 10px;
+  }
+
+  /* About / stat strip */
+  .stat-strip {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0;
+    border: 1px solid var(--border);
+    margin-bottom: 2rem;
+  }
+
+  .stat {
+    padding: 1.5rem 1.75rem;
+    border-right: 1px solid var(--border);
+  }
+
+  .stat:last-child { border-right: none; }
+
+  .stat-num {
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--amber);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-dim);
+    letter-spacing: 0.06em;
+  }
+
+  .about-text {
+    font-size: 13px;
+    color: var(--text-dim);
+    line-height: 2;
+    max-width: 640px;
+    font-style: italic;
+  }
+
+  .about-text span { color: var(--text); font-style: normal; }
+
+  /* Contact */
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .contact-link {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 13px;
+    color: var(--text-dim);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    padding: 0.6rem 1rem;
+    transition: all 0.15s;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-link:hover {
+    border-color: var(--amber-dim);
+    color: var(--amber-bright);
+    background: rgba(212,134,10,0.04);
+  }
+
+  .contact-link .icon { font-size: 16px; }
+
+  /* Footer */
+  footer {
+    padding: 2rem 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 11px;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  /* Typing animation on hero */
+  .typed-line {
+    overflow: hidden;
+    white-space: nowrap;
+    animation: reveal 0.9s steps(30, end) forwards;
+    max-width: fit-content;
+  }
+
+  @keyframes reveal {
+    from { max-width: 0; }
+    to { max-width: 100%; }
+  }
+
+  /* Terminal block */
+  .term-block {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    padding: 1.25rem 1.5rem;
+    margin-top: 2rem;
+    font-size: 12px;
+    line-height: 2;
+  }
+
+  .term-line { display: flex; gap: 1rem; }
+  .term-prompt { color: var(--green-bright); white-space: nowrap; }
+  .term-cmd { color: var(--amber); }
+  .term-out { color: var(--text-dim); padding-left: 2ch; display: block; }
+
+  @media (max-width: 600px) {
+    .stat-strip { grid-template-columns: 1fr; }
+    .stat { border-right: none; border-bottom: 1px solid var(--border); }
+    .stat:last-child { border-bottom: none; }
+    .topbar .nav { display: none; }
+    .hero h1 { font-size: 2.4rem; }
+    .project { grid-template-columns: 1fr; }
+    .project-meta { flex-direction: row; }
+  }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="container">
+    <div class="topbar-id">
+      <span class="prompt">~/</span>yunusemreyl
+    </div>
+    <nav>
+      <ul class="nav">
+        <li><a href="#projects">projects</a></li>
+        <li><a href="#skills">skills</a></li>
+        <li><a href="#about">about</a></li>
+        <li><a href="#contact">contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div class="hero-tag">yunusemreyl.github.io</div>
+      <h1>
+        Yunus<br>
+        <span class="accent">Emre</span><span class="cursor"></span>
+      </h1>
+      <p class="hero-sub">
+        Student &amp; systems developer. I write kernel drivers,<br>
+        build embedded tools, and obsess over Linux internals.
+      </p>
+      <div class="hero-badges">
+        <span class="badge active">Linux Kernel</span>
+        <span class="badge active">Embedded Systems</span>
+        <span class="badge active">Robotics</span>
+        <span class="badge">CachyOS</span>
+        <span class="badge">GTK4</span>
+        <span class="badge">DKMS</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="container">
+      <div class="section-label">Projects</div>
+      <div class="project-list">
+
+        <a class="project" href="https://github.com/yunusemreyl/OMEN-Command-Center-for-Linux" target="_blank">
+          <div>
+            <div class="project-name">OMEN Command Center for Linux</div>
+            <div class="project-desc">
+              Full-featured management suite for HP Omen &amp; Victus laptops on Linux. Custom kernel driver (hp-wmi.c), D-Bus daemon, GTK4/Libadwaita GUI — fan control, RGB keyboard, GPU MUX switching, power profiles.
+            </div>
+          </div>
+          <div class="project-meta">
+            <span class="proj-lang">C / Python</span>
+            <span class="proj-status">active</span>
+          </div>
+          <span class="proj-arrow">→</span>
+        </a>
+
+        <a class="project" href="https://github.com/yunusemreyl" target="_blank">
+          <div>
+            <div class="project-name">hp-wmi kernel driver patches</div>
+            <div class="project-desc">
+              Upstream-quality patches for the Linux hp-wmi driver: board-specific probe fixes for Omen Max (8D41) &amp; Victus (8BA9), graceful fan table degradation, EC heartbeat timer correctness in Manual/Max modes.
+            </div>
+          </div>
+          <div class="project-meta">
+            <span class="proj-lang">C</span>
+            <span class="proj-status">ongoing</span>
+          </div>
+          <span class="proj-arrow">→</span>
+        </a>
+
+        <a class="project" href="https://github.com/yunusemreyl" target="_blank">
+          <div>
+            <div class="project-name">Bazaar <span style="font-size:11px; color:var(--text-muted); font-weight:300">— concept</span></div>
+            <div class="project-desc">
+              GNOME Software-style package manager for Arch-based distros. GTK4 + Libadwaita + Python, transparent Flatpak dependency display, per-app source selector, AUR variant picker.
+            </div>
+          </div>
+          <div class="project-meta">
+            <span class="proj-lang">Python</span>
+            <span class="proj-status">planning</span>
+          </div>
+          <span class="proj-arrow">→</span>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="skills">
+    <div class="container">
+      <div class="section-label">Skills</div>
+      <div class="skills-grid">
+        <div class="skill-cell">
+          <div class="skill-cell-label">Systems</div>
+          <div class="skill-cell-items">
+            <span class="skill-item">Linux Kernel / DKMS</span>
+            <span class="skill-item">WMI / ACPI / DSDT</span>
+            <span class="skill-item">D-Bus / systemd</span>
+            <span class="skill-item">Shell scripting</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cell-label">Languages</div>
+          <div class="skill-cell-items">
+            <span class="skill-item">C</span>
+            <span class="skill-item">Python</span>
+            <span class="skill-item">Bash / Fish</span>
+            <span class="skill-item">Assembly (basic)</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cell-label">Toolchain</div>
+          <div class="skill-cell-items">
+            <span class="skill-item">GTK4 / Libadwaita</span>
+            <span class="skill-item">GCC / GDB / perf</span>
+            <span class="skill-item">Git / GitHub</span>
+            <span class="skill-item">CachyOS / Arch</span>
+          </div>
+        </div>
+        <div class="skill-cell">
+          <div class="skill-cell-label">Embedded &amp; Robotics</div>
+          <div class="skill-cell-items">
+            <span class="skill-item">Embedded C</span>
+            <span class="skill-item">Sensor integration</span>
+            <span class="skill-item">ROS (learning)</span>
+            <span class="skill-item">Hardware hacking</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="term-block">
+        <div class="term-line">
+          <span class="term-prompt">yunus@cachyos ~ $</span>
+          <span class="term-cmd">uname -r</span>
+        </div>
+        <span class="term-out">6.13.x-cachyos-bore</span>
+        <div class="term-line">
+          <span class="term-prompt">yunus@cachyos ~ $</span>
+          <span class="term-cmd">lsmod | grep hp_wmi</span>
+        </div>
+        <span class="term-out">hp_wmi   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  49152  0   &nbsp;[omen_command_center]</span>
+        <div class="term-line">
+          <span class="term-prompt">yunus@cachyos ~ $</span>
+          <span class="term-cmd">git log --oneline -3</span>
+        </div>
+        <span class="term-out">a3f92c1  fix: graceful fan table probe degradation</span>
+        <span class="term-out">9de441b  feat: board 8D41 Omen Max support</span>
+        <span class="term-out">7b12ef0  fix: DKMS stale .ko.zst cleanup on reinstall</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="about">
+    <div class="container">
+      <div class="section-label">About</div>
+      <div class="stat-strip">
+        <div class="stat">
+          <div class="stat-num">3+</div>
+          <div class="stat-label">kernel drivers patched</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">∞</div>
+          <div class="stat-label">hours in dmesg logs</div>
+        </div>
+        <div class="stat">
+          <div class="stat-num">1</div>
+          <div class="stat-label">laptop, fully tamed</div>
+        </div>
+      </div>
+      <p class="about-text">
+        Engineering student based in <span>Turkey</span>, specialising in Linux systems, embedded hardware, and robotics. I started OMEN Command Center for Linux because my HP Victus
+        had no proper Linux support — <span>fan control, GPU switching, and RGB were all broken</span>. So I fixed them myself, from the kernel driver up to the GTK4 UI.<br><br>
+        When I'm not debugging ACPI tables I'm playing <span>CS2</span>, studying kernel internals, or planning the next open-source tool nobody asked for but everyone needs.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="container">
+      <div class="section-label">Contact</div>
+      <p style="font-size:13px; color:var(--text-dim); margin-bottom:1.25rem;">
+        Open for collaborations, kernel patches, and interesting problems.
+      </p>
+      <div class="contact-row">
+        <a class="contact-link" href="https://github.com/yunusemreyl" target="_blank">
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
+          </svg>
+          github.com/yunusemreyl
+        </a>
+        <a class="contact-link" href="mailto:yunusemreyl@example.com">
+          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+          e-posta
+        </a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <span>© 2026 Yunus Emre — yunusemreyl</span>
+      <span>built with HTML · deployed on GitHub Pages</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
