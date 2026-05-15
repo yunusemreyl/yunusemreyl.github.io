@@ -10,23 +10,23 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg-gradient: radial-gradient(circle at 50% 0%, #1e1b18 0%, #0a0908 100%);
-    --glass-bg: rgba(25, 23, 20, 0.45);
-    --glass-bg-hover: rgba(35, 32, 28, 0.6);
-    --glass-border: rgba(212, 134, 10, 0.18);
-    --glass-border-bright: rgba(240, 160, 32, 0.35);
-    --glass-highlight: inset 1px 1px 0px rgba(255, 255, 255, 0.08), inset -1px -1px 0px rgba(0, 0, 0, 0.24);
+    --bg-gradient: radial-gradient(circle at 20% 0%, #fff8ef 0%, #f7ebd9 46%, #eed9bc 100%);
+    --glass-bg: rgba(255, 248, 238, 0.78);
+    --glass-bg-hover: rgba(255, 244, 228, 0.95);
+    --glass-border: rgba(214, 147, 55, 0.3);
+    --glass-border-bright: rgba(255, 145, 33, 0.58);
+    --glass-highlight: inset 2px 2px 0px rgba(255, 255, 255, 0.95), inset -2px -2px 0px rgba(190, 156, 120, 0.2);
     
-    --amber: #d4860a;
-    --amber-bright: #f0a020;
-    --amber-glow: rgba(212, 134, 10, 0.15);
-    --text: #e6dfcb;
-    --text-dim: #968e7a;
-    --text-muted: #5e584a;
-    --green-bright: #6db362;
+    --amber: #d97900;
+    --amber-bright: #ff8f1f;
+    --amber-glow: rgba(255, 143, 31, 0.25);
+    --text: #2f2218;
+    --text-dim: #624d39;
+    --text-muted: #8e7258;
+    --green-bright: #2d9b76;
     
-    --shadow-soft: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --shadow-inset: inset 0 2px 4px rgba(0,0,0,0.5);
+    --shadow-soft: 8px 8px 24px rgba(152, 118, 80, 0.2), -8px -8px 24px rgba(255, 255, 255, 0.7);
+    --shadow-inset: inset 2px 2px 6px rgba(255,255,255,0.75), inset -3px -3px 8px rgba(159, 119, 76, 0.2);
   }
 
   html { scroll-behavior: smooth; }
@@ -39,6 +39,7 @@
     line-height: 1.7;
     min-height: 100vh;
     overflow-x: hidden;
+    padding-bottom: 2rem;
   }
 
   /* Grain Texture Overlay */
@@ -46,7 +47,7 @@
     content: '';
     position: fixed;
     inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.76' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
     pointer-events: none;
     z-index: 99;
   }
@@ -57,13 +58,29 @@
     padding: 0 2rem;
   }
 
+  main {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding-top: 1.8rem;
+  }
+
+  .section-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 24px;
+    padding: 2.2rem;
+    box-shadow: var(--glass-highlight), var(--shadow-soft);
+    backdrop-filter: blur(6px);
+  }
+
   /* Glassmorphic Top Bar */
   .topbar {
-    background: rgba(14, 13, 11, 0.6);
-    backdrop-filter: blur(12px) saturate(140%);
-    -webkit-backdrop-filter: blur(12px) saturate(140%);
+    background: rgba(255, 243, 226, 0.78);
+    backdrop-filter: blur(10px) saturate(130%);
+    -webkit-backdrop-filter: blur(10px) saturate(130%);
     border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 4px 20px rgba(0,0,0,0.2), inset 0 -1px 0 rgba(255,255,255,0.02);
+    box-shadow: 0 4px 14px rgba(167, 128, 88, 0.15), inset 0 -1px 0 rgba(255,255,255,0.75);
     padding: 1.2rem 0;
     position: sticky;
     top: 0;
@@ -106,14 +123,14 @@
   }
 
   /* Hero Section */
-  .hero { padding: 6rem 0 4rem; }
+  .hero { padding: 2rem 0 0.5rem; }
 
   .hero-tag {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 11px;
     color: var(--text-dim);
     letter-spacing: 0.1em;
-    background: rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.7);
     padding: 4px 12px;
     border-radius: 20px;
     display: inline-block;
@@ -127,8 +144,8 @@
     font-size: clamp(2.8rem, 6vw, 4.5rem);
     font-weight: 300;
     line-height: 1.1;
-    color: #fff;
-    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    color: #2c2017;
+    text-shadow: 0 2px 10px rgba(255,255,255,0.5);
   }
 
   .hero h1 .accent {
@@ -190,7 +207,7 @@
   }
 
   /* Sections */
-  .section { padding: 5rem 0; }
+  .section { padding: 0.5rem 0; }
 
   .section-label {
     font-family: 'IBM Plex Mono', monospace;
@@ -225,7 +242,7 @@
     text-decoration: none;
     color: inherit;
     box-shadow: var(--glass-highlight), var(--shadow-soft);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(6px);
     transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
   }
 
@@ -233,10 +250,10 @@
     transform: translateY(-2px);
     background: var(--glass-bg-hover);
     border-color: var(--glass-border-bright);
-    box-shadow: var(--glass-highlight), 0 12px 24px rgba(0,0,0,0.4), 0 0 15px rgba(212,134,10,0.05);
+    box-shadow: var(--glass-highlight), 0 12px 24px rgba(166, 125, 82, 0.2), 0 0 16px rgba(255,143,31,0.12);
   }
 
-  .project:hover .project-name { color: #fff; }
+  .project:hover .project-name { color: #1d150f; }
   .project:hover .proj-arrow { color: var(--amber-bright); transform: translateX(3px); }
 
   .project-name {
@@ -338,16 +355,16 @@
 
   /* Glossy Terminal Block */
   .term-block {
-    background: rgba(10, 9, 8, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    background: rgba(246, 229, 203, 0.7);
+    border: 1px solid rgba(216, 167, 102, 0.38);
+    border-top: 1px solid rgba(255, 255, 255, 0.95);
     border-radius: 14px;
     padding: 1.5rem;
     margin-top: 2rem;
     font-family: 'IBM Plex Mono', monospace;
     font-size: 12px;
     line-height: 2;
-    box-shadow: inset 0 2px 8px rgba(0,0,0,0.8), var(--shadow-soft);
+    box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), inset 0 -3px 10px rgba(166, 124, 77, 0.18), var(--shadow-soft);
   }
 
   .term-line { display: flex; gap: 1rem; }
@@ -359,7 +376,7 @@
   .stat-strip {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background: rgba(0, 0, 0, 0.2);
+    background: rgba(255, 239, 217, 0.65);
     border: 1px solid var(--glass-border);
     border-radius: 16px;
     box-shadow: var(--shadow-inset);
@@ -445,7 +462,7 @@
   footer {
     padding: 2.5rem 0;
     border-top: 1px solid var(--glass-border);
-    background: rgba(10, 9, 8, 0.4);
+    background: rgba(255, 243, 226, 0.7);
   }
 
   .footer-inner {
@@ -458,6 +475,7 @@
   }
 
   @media (max-width: 600px) {
+    .section-card { padding: 1.5rem; border-radius: 18px; }
     .stat-strip { grid-template-columns: 1fr; }
     .stat { border-right: none; border-bottom: 1px solid var(--glass-border); }
     .stat:last-child { border-bottom: none; }
@@ -489,7 +507,7 @@
 
 <main>
   <section class="hero">
-    <div class="container">
+    <div class="container section-card">
       <div class="hero-tag">yunusemreyl.github.io</div>
       <h1>
         Yunus<br>
@@ -511,7 +529,7 @@
   </section>
 
   <section class="section" id="projects">
-    <div class="container">
+    <div class="container section-card">
       <div class="section-label">Projects</div>
       <div class="project-list">
 
@@ -548,7 +566,7 @@
   </section>
 
   <section class="section" id="skills">
-    <div class="container">
+    <div class="container section-card">
       <div class="section-label">Skills</div>
       <div class="skills-grid">
         <div class="skill-cell">
@@ -611,7 +629,7 @@
   </section>
 
   <section class="section" id="about">
-    <div class="container">
+    <div class="container section-card">
       <div class="section-label">About</div>
       <div class="stat-strip">
         <div class="stat">
@@ -636,7 +654,7 @@
   </section>
 
   <section class="section" id="contact">
-    <div class="container">
+    <div class="container section-card">
       <div class="section-label">Contact</div>
       <p style="font-size:13px; color:var(--text-dim); margin-bottom:1.25rem;">
         Open for collaborations, kernel patches, and interesting problems.
