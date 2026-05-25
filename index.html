@@ -1,691 +1,220 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="tr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Yunus Emre — Systems Developer</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yunus Emre Yılmaz | Portfolyo</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #161b26;
+            --accent-color: #7928ca;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --border-color: #242b3d;
+        }
 
-  :root {
-    --bg-gradient: radial-gradient(circle at 20% 0%, #fff8ef 0%, #f7ebd9 46%, #eed9bc 100%);
-    --glass-bg: rgba(255, 248, 238, 0.78);
-    --glass-bg-hover: rgba(255, 244, 228, 0.95);
-    --glass-border: rgba(214, 147, 55, 0.3);
-    --glass-border-bright: rgba(255, 145, 33, 0.58);
-    --glass-highlight: inset 2px 2px 0px rgba(255, 255, 255, 0.95), inset -2px -2px 0px rgba(190, 156, 120, 0.2);
-    
-    --amber: #d97900;
-    --amber-bright: #ff8f1f;
-    --amber-glow: rgba(255, 143, 31, 0.25);
-    --text: #2f2218;
-    --text-dim: #624d39;
-    --text-muted: #8e7258;
-    --green-bright: #2d9b76;
-    
-    --shadow-soft: 8px 8px 24px rgba(152, 118, 80, 0.2), -8px -8px 24px rgba(255, 255, 255, 0.7);
-    --shadow-inset: inset 2px 2px 6px rgba(255,255,255,0.75), inset -3px -3px 8px rgba(159, 119, 76, 0.2);
-  }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
 
-  html { scroll-behavior: smooth; }
+        .container {
+            width: 100%;
+            max-width: 900px;
+            padding: 40px 20px;
+            box-sizing: border-box;
+        }
 
-  body {
-    background: var(--bg-gradient);
-    color: var(--text);
-    font-family: 'IBM Plex Sans', sans-serif;
-    font-size: 14px;
-    line-height: 1.7;
-    min-height: 100vh;
-    overflow-x: hidden;
-    padding-bottom: 2rem;
-  }
+        /* Hero / Header Section */
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
 
-  /* Grain Texture Overlay */
-  body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.76' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.02'/%3E%3C/svg%3E");
-    pointer-events: none;
-    z-index: 99;
-  }
+        .profile-img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 3px solid var(--accent-color);
+            object-fit: cover;
+        }
 
-  .container {
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 0 2rem;
-  }
+        h1 {
+            font-size: 2.2rem;
+            margin: 15px 0 5px 0;
+            letter-spacing: 0.5px;
+        }
 
-  main {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    padding-top: 1.8rem;
-  }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+        }
 
-  .section-card {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 24px;
-    padding: 2.2rem;
-    box-shadow: var(--glass-highlight), var(--shadow-soft);
-    backdrop-filter: blur(6px);
-  }
+        /* Section Styling */
+        section {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
 
-  /* Glassmorphic Top Bar */
-  .topbar {
-    background: rgba(255, 243, 226, 0.78);
-    backdrop-filter: blur(10px) saturate(130%);
-    -webkit-backdrop-filter: blur(10px) saturate(130%);
-    border-bottom: 1px solid var(--glass-border);
-    box-shadow: 0 4px 14px rgba(167, 128, 88, 0.15), inset 0 -1px 0 rgba(255,255,255,0.75);
-    padding: 1.2rem 0;
-    position: sticky;
-    top: 0;
-    z-index: 50;
-  }
+        h2 {
+            font-size: 1.4rem;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 10px;
+            margin-top: 0;
+            color: var(--text-main);
+        }
 
-  .topbar .container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+        p {
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
 
-  .topbar-id {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--amber-bright);
-    text-shadow: 0 0 8px var(--amber-glow);
-  }
+        /* Grid Layouts */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
 
-  .topbar-id .prompt { color: var(--text-muted); }
+        .card {
+            background-color: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 15px;
+            transition: transform 0.2s, border-color 0.2s;
+        }
 
-  .nav {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-  }
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: var(--accent-color);
+        }
 
-  .nav a {
-    font-family: 'IBM Plex Mono', monospace;
-    color: var(--text-dim);
-    text-decoration: none;
-    font-size: 12px;
-    transition: color 0.2s, text-shadow 0.2s;
-  }
+        .card h3 {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+        }
 
-  .nav a:hover { 
-    color: var(--amber-bright); 
-    text-shadow: 0 0 8px var(--amber-glow);
-  }
+        /* Badges / Tech Stack */
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
 
-  /* Hero Section */
-  .hero { padding: 2rem 0 0.5rem; }
+        .badge {
+            background-color: rgba(121, 40, 202, 0.15);
+            color: #b784e8;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
 
-  .hero-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--text-dim);
-    letter-spacing: 0.1em;
-    background: rgba(255,255,255,0.7);
-    padding: 4px 12px;
-    border-radius: 20px;
-    display: inline-block;
-    box-shadow: var(--shadow-inset);
-    border: 1px solid rgba(255,255,255,0.03);
-    margin-bottom: 1.5rem;
-  }
+        /* Footer Links */
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
 
-  .hero h1 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
-    font-weight: 300;
-    line-height: 1.1;
-    color: #2c2017;
-    text-shadow: 0 2px 10px rgba(255,255,255,0.5);
-  }
+        .links a {
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 8px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            transition: background 0.2s;
+        }
 
-  .hero h1 .accent {
-    color: var(--amber-bright);
-    font-weight: 600;
-    text-shadow: 0 0 20px var(--amber-glow);
-  }
-
-  .hero-sub {
-    font-size: 14px;
-    color: var(--text-dim);
-    margin-top: 1.75rem;
-    max-width: 520px;
-    line-height: 1.8;
-  }
-
-  .hero-badges {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.6rem;
-    margin-top: 2rem;
-  }
-
-  /* Skuemorphic/Glass Badges */
-  .badge {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    padding: 5px 14px;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 8px;
-    color: var(--text-dim);
-    box-shadow: var(--glass-highlight), var(--shadow-soft);
-    backdrop-filter: blur(4px);
-    transition: all 0.2s;
-  }
-
-  .badge.active {
-    border-color: var(--glass-border-bright);
-    color: var(--amber-bright);
-    background: rgba(212, 134, 10, 0.12);
-    box-shadow: var(--glass-highlight), 0 0 12px rgba(212, 134, 10, 0.15);
-  }
-
-  .cursor {
-    display: inline-block;
-    width: 0.55em;
-    height: 0.9em;
-    background: var(--amber-bright);
-    margin-left: 4px;
-    vertical-align: -0.1em;
-    box-shadow: 0 0 8px var(--amber-bright);
-    animation: blink 1.1s step-end infinite;
-  }
-
-  @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0; }
-  }
-
-  /* Sections */
-  .section { padding: 0.5rem 0; }
-
-  .section-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--amber);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-bottom: 2.5rem;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .section-label::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: linear-gradient(90deg, var(--glass-border), transparent);
-  }
-
-  /* Glass Cards with Skuemorphic Depth */
-  .project-list { display: flex; flex-direction: column; gap: 1.25rem; }
-
-  .project {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 1rem;
-    padding: 1.75rem 2rem;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    text-decoration: none;
-    color: inherit;
-    box-shadow: var(--glass-highlight), var(--shadow-soft);
-    backdrop-filter: blur(6px);
-    transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .project:hover {
-    transform: translateY(-2px);
-    background: var(--glass-bg-hover);
-    border-color: var(--glass-border-bright);
-    box-shadow: var(--glass-highlight), 0 12px 24px rgba(166, 125, 82, 0.2), 0 0 16px rgba(255,143,31,0.12);
-  }
-
-  .project:hover .project-name { color: #1d150f; }
-  .project:hover .proj-arrow { color: var(--amber-bright); transform: translateX(3px); }
-
-  .project-name {
-    font-size: 16px;
-    font-weight: 600;
-    color: var(--text);
-    margin-bottom: 0.4rem;
-    transition: color 0.2s;
-  }
-
-  .project-desc {
-    font-size: 13px;
-    color: var(--text-dim);
-    line-height: 1.6;
-    max-width: 560px;
-  }
-
-  .project-meta {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    align-items: flex-end;
-    justify-content: center;
-  }
-
-  .proj-lang {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--green-bright);
-    font-weight: 500;
-  }
-
-  .proj-status {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px;
-    color: var(--amber-bright);
-    background: rgba(212,134,10,0.1);
-    border: 1px solid rgba(212,134,10,0.25);
-    padding: 2px 8px;
-    border-radius: 4px;
-    box-shadow: var(--shadow-inset);
-  }
-
-  .proj-arrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 16px;
-    color: var(--text-muted);
-    transition: all 0.2s;
-    align-self: center;
-    padding-left: 1rem;
-  }
-
-  /* Skills Skuemorphic Grid */
-  .skills-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-    gap: 1rem;
-  }
-
-  .skill-cell {
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    border-radius: 14px;
-    padding: 1.5rem;
-    box-shadow: var(--glass-highlight), var(--shadow-soft);
-    backdrop-filter: blur(6px);
-  }
-
-  .skill-cell-label {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    font-weight: 600;
-    color: var(--amber);
-    margin-bottom: 1rem;
-    letter-spacing: 0.05em;
-  }
-
-  .skill-cell-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .skill-item {
-    font-size: 13px;
-    color: var(--text-dim);
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-  }
-
-  .skill-item::before {
-    content: '→';
-    color: var(--amber-bright);
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    opacity: 0.7;
-  }
-
-  /* Glossy Terminal Block */
-  .term-block {
-    background: rgba(246, 229, 203, 0.7);
-    border: 1px solid rgba(216, 167, 102, 0.38);
-    border-top: 1px solid rgba(255, 255, 255, 0.95);
-    border-radius: 14px;
-    padding: 1.5rem;
-    margin-top: 2rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    line-height: 2;
-    box-shadow: inset 0 2px 6px rgba(255,255,255,0.7), inset 0 -3px 10px rgba(166, 124, 77, 0.18), var(--shadow-soft);
-  }
-
-  .term-line { display: flex; gap: 1rem; }
-  .term-prompt { color: var(--green-bright); white-space: nowrap; }
-  .term-cmd { color: var(--amber-bright); }
-  .term-out { color: var(--text-dim); padding-left: 2ch; display: block; }
-
-  /* Stats Skuemorphic Strip */
-  .stat-strip {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    background: rgba(255, 239, 217, 0.65);
-    border: 1px solid var(--glass-border);
-    border-radius: 16px;
-    box-shadow: var(--shadow-inset);
-    margin-bottom: 2.5rem;
-    overflow: hidden;
-  }
-
-  .stat {
-    padding: 1.75rem;
-    text-align: center;
-    border-right: 1px solid var(--glass-border);
-    backdrop-filter: blur(4px);
-  }
-
-  .stat:last-child { border-right: none; }
-
-  .stat-num {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 2.2rem;
-    font-weight: 500;
-    color: var(--amber-bright);
-    line-height: 1;
-    margin-bottom: 0.4rem;
-    text-shadow: 0 0 10px var(--amber-glow);
-  }
-
-  .stat-label {
-    font-size: 12px;
-    color: var(--text-dim);
-  }
-
-  .about-text {
-    font-size: 14px;
-    color: var(--text-dim);
-    line-height: 1.9;
-    max-width: 680px;
-  }
-
-  .about-text span { color: var(--text); font-weight: 500; }
-
-  /* Skuemorphic Glossy Buttons */
-  .contact-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.25rem;
-    margin-top: 1.5rem;
-  }
-
-  .contact-link {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--text);
-    text-decoration: none;
-    background: var(--glass-bg);
-    border: 1px solid var(--glass-border);
-    padding: 0.75rem 1.5rem;
-    border-radius: 12px;
-    box-shadow: var(--glass-highlight), var(--shadow-soft);
-    backdrop-filter: blur(8px);
-    transition: all 0.2s ease;
-  }
-
-  .contact-link:hover {
-    border-color: var(--glass-border-bright);
-    color: #fff;
-    background: var(--glass-bg-hover);
-    transform: translateY(-1px);
-    box-shadow: var(--glass-highlight), 0 6px 15px rgba(0,0,0,0.3), 0 0 10px var(--amber-glow);
-  }
-
-  .contact-link:active {
-    transform: translateY(1px);
-    box-shadow: var(--shadow-inset);
-    background: rgba(0,0,0,0.2);
-  }
-
-  .contact-link .icon { opacity: 0.8; }
-
-  /* Footer */
-  footer {
-    padding: 2.5rem 0;
-    border-top: 1px solid var(--glass-border);
-    background: rgba(255, 243, 226, 0.7);
-  }
-
-  .footer-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 11px;
-    color: var(--text-muted);
-  }
-
-  @media (max-width: 600px) {
-    .section-card { padding: 1.5rem; border-radius: 18px; }
-    .stat-strip { grid-template-columns: 1fr; }
-    .stat { border-right: none; border-bottom: 1px solid var(--glass-border); }
-    .stat:last-child { border-bottom: none; }
-    .topbar .nav { display: none; }
-    .hero h1 { font-size: 2.4rem; }
-    .project { grid-template-columns: 1fr; padding: 1.5rem; }
-    .project-meta { flex-direction: row; justify-content: space-between; align-items: center; margin-top: 0.5rem; }
-    .proj-arrow { display: none; }
-  }
-</style>
+        .links a:hover {
+            background-color: var(--accent-color);
+            border-color: var(--accent-color);
+        }
+    </style>
 </head>
 <body>
 
-<header class="topbar">
-  <div class="container">
-    <div class="topbar-id">
-      <span class="prompt">~/</span>yunusemreyl
-    </div>
-    <nav>
-      <ul class="nav">
-        <li><a href="#projects">projects</a></li>
-        <li><a href="#skills">skills</a></li>
-        <li><a href="#about">about</a></li>
-        <li><a href="#contact">contact</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
+<div class="container">
+    <header>
+        <img src="https://github.com/yunusemreyl.png" alt="Yunus Emre Yılmaz" class="profile-img">
+        <h1>YUNUS EMRE YILMAZ</h1>
+        <div class="subtitle">Gömülü Sistemler ve Yazılım Geliştirici</div>
+    </header>
 
-<main>
-  <section class="hero">
-    <div class="container section-card">
-      <div class="hero-tag">yunusemreyl.github.io</div>
-      <h1>
-        Yunus<br>
-        <span class="accent">Emre</span><span class="cursor"></span>
-      </h1>
-      <p class="hero-sub">
-        Student &amp; systems developer. I write kernel drivers,<br>
-        build embedded tools, and obsess over Linux internals.
-      </p>
-      <div class="hero-badges">
-        <span class="badge active">Linux Kernel</span>
-        <span class="badge active">Embedded Systems</span>
-        <span class="badge active">Robotics</span>
-        <span class="badge">CachyOS</span>
-        <span class="badge">GTK4</span>
-        <span class="badge">DKMS</span>
-      </div>
-    </div>
-  </section>
+    <section id="about">
+        <h2>Hakkımda</h2>
+        <p>
+            Otonom sistemler, donanım kontrol araçları ve düşük seviyeli yazılım geliştirme üzerine odaklanıyorum. 
+            Güvenli, optimize ve modern arayüz tasarım ilkelerine (Fluent Design) sahip donanım sürücüleri ve mimariler inşa etmek temel çalışma alanlarımı oluşturuyor.
+        </p>
+    </section>
 
-  <section class="section" id="projects">
-    <div class="container section-card">
-      <div class="section-label">Projects</div>
-      <div class="project-list">
-
-        <a class="project" href="https://github.com/yunusemreyl/OMEN-Command-Center-for-Linux" target="_blank">
-          <div>
-            <div class="project-name">OMEN Command Center for Linux</div>
-            <div class="project-desc">
-              Full-featured management suite for HP Omen &amp; Victus laptops on Linux. Custom kernel driver (hp-wmi.c), D-Bus daemon, GTK4/Libadwaita GUI — fan control, RGB keyboard, GPU MUX switching, power profiles.
+    <section id="technical">
+        <h2>Teknik Uzmanlıklar</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Programlama Dilleri</h3>
+                <div class="badge-list">
+                    <span class="badge">C / C++</span>
+                    <span class="badge">Python</span>
+                    <span class="badge">Rust</span>
+                </div>
             </div>
-          </div>
-          <div class="project-meta">
-            <span class="proj-lang">C / Python</span>
-            <span class="proj-status">active</span>
-          </div>
-          <span class="proj-arrow">→</span>
-        </a>
-
-        <a class="project" href="https://github.com/yunusemreyl" target="_blank">
-          <div>
-            <div class="project-name">hp-wmi kernel driver patches</div>
-            <div class="project-desc">
-              Upstream-quality patches for the Linux hp-wmi driver: board-specific probe fixes for Omen Max (8D41) &amp; Victus (8BA9), graceful fan table degradation, EC heartbeat timer correctness in Manual/Max modes.
+            <div class="card">
+                <h3>Donanım & Gömülü</h3>
+                <div class="badge-list">
+                    <span class="badge">Microcontrollers</span>
+                    <span class="badge">ESP-NOW / Wi-Fi</span>
+                    <span class="badge">Kernel Drivers</span>
+                </div>
             </div>
-          </div>
-          <div class="project-meta">
-            <span class="proj-lang">C</span>
-            <span class="proj-status">ongoing</span>
-          </div>
-          <span class="proj-arrow">→</span>
-        </a>
+            <div class="card">
+                <h3>Araçlar & Ortamlar</h3>
+                <div class="badge-list">
+                    <span class="badge">Linux / Git</span>
+                    <span class="badge">VS Code</span>
+                    <span class="badge">Embedded Toolchains</span>
+                </div>
+            </div>
+        </div>
+    </section>
 
-      </div>
-    </div>
-  </section>
+    <section id="projects">
+        <h2>Öne Çıkan Projeler</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>OmenLin</h3>
+                <p>HP Omen ve Victus dizüstü bilgisayarlar için geliştirilmiş, dikey kokpit düzenine sahip performans ve donanım kontrol yönetim yazılımı.</p>
+            </div>
+            <div class="card">
+                <h3>D.O.S.T.</h3>
+                <p>İnsansız Hava Aracı (İHA) ve İnsansız Kara Aracı (İKA) koordinasyonunu sağlayan, düşük gecikmeli haberleşme tabanlı otonom sistem projesi.</p>
+            </div>
+        </div>
+    </section>
 
-  <section class="section" id="skills">
-    <div class="container section-card">
-      <div class="section-label">Skills</div>
-      <div class="skills-grid">
-        <div class="skill-cell">
-          <div class="skill-cell-label">Systems</div>
-          <div class="skill-cell-items">
-            <span class="skill-item">Linux Kernel / DKMS</span>
-            <span class="skill-item">WMI / ACPI / DSDT</span>
-            <span class="skill-item">D-Bus / systemd</span>
-            <span class="skill-item">Shell scripting</span>
-          </div>
+    <footer>
+        <div class="links">
+            <a href="https://github.com/yunusemreyl" target="_blank">GitHub</a>
+            <a href="mailto:iletisim@eposta.com">İletişim</a>
         </div>
-        <div class="skill-cell">
-          <div class="skill-cell-label">Languages</div>
-          <div class="skill-cell-items">
-            <span class="skill-item">C</span>
-            <span class="skill-item">Python</span>
-            <span class="skill-item">Bash / Fish</span>
-            <span class="skill-item">Assembly (basic)</span>
-          </div>
-        </div>
-        <div class="skill-cell">
-          <div class="skill-cell-label">Toolchain</div>
-          <div class="skill-cell-items">
-            <span class="skill-item">GTK4 / Libadwaita</span>
-            <span class="skill-item">GCC / GDB / perf</span>
-            <span class="skill-item">Git / GitHub</span>
-            <span class="skill-item">CachyOS / Arch</span>
-          </div>
-        </div>
-        <div class="skill-cell">
-          <div class="skill-cell-label">Embedded &amp; Robotics</div>
-          <div class="skill-cell-items">
-            <span class="skill-item">Embedded C</span>
-            <span class="skill-item">Sensor integration</span>
-            <span class="skill-item">ROS (learning)</span>
-            <span class="skill-item">Hardware hacking</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="term-block">
-        <div class="term-line">
-          <span class="term-prompt">yunus@cachyos ~ $</span>
-          <span class="term-cmd">uname -r</span>
-        </div>
-        <span class="term-out">6.13.x-cachyos-bore</span>
-        <div class="term-line">
-          <span class="term-prompt">yunus@cachyos ~ $</span>
-          <span class="term-cmd">lsmod | grep hp_wmi</span>
-        </div>
-        <span class="term-out">hp_wmi          49152  0    [omen_command_center]</span>
-        <div class="term-line">
-          <span class="term-prompt">yunus@cachyos ~ $</span>
-          <span class="term-cmd">git log --oneline -2</span>
-        </div>
-        <span class="term-out">a3f92c1 fix: graceful fan table probe degradation</span>
-        <span class="term-out">9de441b feat: board 8D41 Omen Max support</span>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="about">
-    <div class="container section-card">
-      <div class="section-label">About</div>
-      <div class="stat-strip">
-        <div class="stat">
-          <div class="stat-num">3+</div>
-          <div class="stat-label">kernel drivers patched</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">∞</div>
-          <div class="stat-label">hours in dmesg logs</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">1</div>
-          <div class="stat-label">laptop, fully tamed</div>
-        </div>
-      </div>
-      <p class="about-text">
-        Engineering student based in <span>Turkey</span>, specialising in Linux systems, embedded hardware, and robotics. I started OMEN Command Center for Linux because my HP Victus
-        had no proper Linux support — <span>fan control, GPU switching, and RGB were all broken</span>. So I fixed them myself, from the kernel driver up to the GTK4 UI.<br><br>
-        When I'm not debugging ACPI tables, I'm studying kernel internals, optimizing system benchmarks, or planning the next open-source tool nobody asked for but everyone needs.
-      </p>
-    </div>
-  </section>
-
-  <section class="section" id="contact">
-    <div class="container section-card">
-      <div class="section-label">Contact</div>
-      <p style="font-size:13px; color:var(--text-dim); margin-bottom:1.25rem;">
-        Open for collaborations, kernel patches, and interesting problems.
-      </p>
-      <div class="contact-row">
-        <a class="contact-link" href="https://github.com/yunusemreyl" target="_blank">
-          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-          </svg>
-          github.com/yunusemreyl
-        </a>
-        <a class="contact-link" href="mailto:yunusemreyl@example.com">
-          <svg class="icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5">
-            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-            <polyline points="22,6 12,13 2,6"/>
-          </svg>
-          e-posta
-        </a>
-      </div>
-    </div>
-  </section>
-</main>
-
-<footer>
-  <div class="container">
-    <div class="footer-inner">
-      <span>© 2026 Yunus Emre — yunusemreyl</span>
-      <span>built with HTML · deployed on GitHub Pages</span>
-    </div>
-  </div>
-</footer>
+    </footer>
+</div>
 
 </body>
 </html>
