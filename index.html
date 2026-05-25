@@ -29,12 +29,37 @@
             max-width: 900px;
             padding: 40px 20px;
             box-sizing: border-box;
+            position: relative;
+        }
+
+        /* Language Switcher */
+        .lang-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+        }
+
+        .lang-btn {
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+        }
+
+        .lang-btn:hover {
+            border-color: var(--accent-color);
         }
 
         /* Hero / Header Section */
         header {
             text-align: center;
             margin-bottom: 40px;
+            margin-top: 20px;
         }
 
         .profile-img {
@@ -150,44 +175,53 @@
 <body>
 
 <div class="container">
+    <div class="lang-switcher">
+        <button class="lang-btn" onclick="toggleLanguage()" id="langBtn">EN</button>
+    </div>
+
     <header>
         <img src="https://github.com/yunusemreyl.png" alt="Yunus Emre Yılmaz" class="profile-img">
         <h1>YUNUS EMRE YILMAZ</h1>
-        <div class="subtitle">Gömülü Sistemler ve Yazılım Geliştirici</div>
+        <div class="subtitle" id="subtitle">Elektrik-Elektronik Mühendisliği Öğrencisi & Yazılım Geliştirici</div>
     </header>
 
     <section id="about">
-        <h2>Hakkımda</h2>
-        <p>
-            Otonom sistemler, donanım kontrol araçları ve düşük seviyeli yazılım geliştirme üzerine odaklanıyorum. 
-            Güvenli, optimize ve modern arayüz tasarım ilkelerine (Fluent Design) sahip donanım sürücüleri ve mimariler inşa etmek temel çalışma alanlarımı oluşturuyor.
+        <h2 id="title-about">Hakkımda</h2>
+        <p id="desc-about-1">
+            Donanım ve yazılımın kesişim noktasına odaklanmış bir Elektrik-Elektronik Mühendisliği öğrencisiyim. Yüksek performanslı gömülü sistemler, gerçek zamanlı işletim mimarileri (RTOS), Linux tabanlı platform entegrasyonu ve otonom, kontrol odaklı robotik geliştirme alanlarında çalışıyorum.
+        </p>
+        <p id="desc-about-2">
+            <strong>GreenHouse-OS & SwarmAgri</strong> (TEKNOFEST platformları) bünyesinde Yazılım Sorumlusu olarak görev alıyor, açık kaynaklı araçlara ve özelleştirilmiş işletim sistemi deneyimlerine katkıda bulunuyorum.
         </p>
     </section>
 
     <section id="technical">
-        <h2>Teknik Uzmanlıklar</h2>
+        <h2 id="title-tech">Teknik Uzmanlıklar</h2>
         <div class="grid">
             <div class="card">
-                <h3>Programlama Dilleri</h3>
+                <h3 id="tech-lang">Programlama Dilleri</h3>
                 <div class="badge-list">
                     <span class="badge">C / C++</span>
                     <span class="badge">Python</span>
-                    <span class="badge">Rust</span>
+                    <span class="badge">Bash Scripting</span>
+                    <span class="badge">Assembly</span>
                 </div>
             </div>
             <div class="card">
-                <h3>Donanım & Gömülü</h3>
+                <h3 id="tech-hw">Donanım & Gömülü</h3>
                 <div class="badge-list">
-                    <span class="badge">Microcontrollers</span>
-                    <span class="badge">ESP-NOW / Wi-Fi</span>
-                    <span class="badge">Kernel Drivers</span>
+                    <span class="badge">ESP32 / STM32</span>
+                    <span class="badge">RTOS</span>
+                    <span class="badge">Aygıt Sürücüleri</span>
+                    <span class="badge">Devre Tasarımı & Analizi</span>
                 </div>
             </div>
             <div class="card">
-                <h3>Araçlar & Ortamlar</h3>
+                <h3 id="tech-tools">Araçlar & Ortamlar</h3>
                 <div class="badge-list">
-                    <span class="badge">Linux / Git</span>
-                    <span class="badge">VS Code</span>
+                    <span class="badge">Linux CLI & Shells</span>
+                    <span class="badge">Git & GitHub</span>
+                    <span class="badge">ROS (Robot OS)</span>
                     <span class="badge">Embedded Toolchains</span>
                 </div>
             </div>
@@ -195,26 +229,102 @@
     </section>
 
     <section id="projects">
-        <h2>Öne Çıkan Projeler</h2>
+        <h2 id="title-projects">Öne Çıkan Projeler</h2>
         <div class="grid">
             <div class="card">
-                <h3>OmenLin</h3>
-                <p>HP Omen ve Victus dizüstü bilgisayarlar için geliştirilmiş, dikey kokpit düzenine sahip performans ve donanım kontrol yönetim yazılımı.</p>
+                <h3>Omen Control</h3>
+                <p id="proj-omen">GNU/Linux üzerinde çalışan HP Omen/Victus dizüstü bilgisayarlar için fan hızlarını, güç profillerini ve temel donanım seçeneklerini yapılandırmak üzere tasarlanmış açık kaynaklı performans yönetim aracı.</p>
             </div>
             <div class="card">
-                <h3>D.O.S.T.</h3>
-                <p>İnsansız Hava Aracı (İHA) ve İnsansız Kara Aracı (İKA) koordinasyonunu sağlayan, düşük gecikmeli haberleşme tabanlı otonom sistem projesi.</p>
+                <h3>SwarmAgri (TEKNOFEST)</h3>
+                <p id="proj-swarm">Dağıtık koordinat tabanlı fikir birliği (consensus) algoritmaları kullanan, hassas tarım manevraları için optimize edilmiş çoklu ajan (multi-agent) tarım robotiği kontrol ve koordinasyon çerçevesi.</p>
+            </div>
+            <div class="card">
+                <h3>ESP32-S3 Precision Drone (TÜBİTAK 2209-A)</h3>
+                <p id="proj-drone">Yakın mesafe ürün izleme ve hassas tarım operasyonları için geliştirilen, gücünü ESP32-S3 mikrodenetleyiciden alan, maliyet etkin ve yüksek hassasiyetli uçuş platformu.</p>
             </div>
         </div>
     </section>
 
     <footer>
         <div class="links">
-            <a href="https://github.com/yunusemreyl" target="_blank">GitHub</a>
-            <a href="mailto:iletisim@eposta.com">İletişim</a>
+            <a href="https://github.com/yunusemreyl" target="_blank" id="link-github">GitHub Profili</a>
         </div>
     </footer>
 </div>
+
+<script>
+    const translations = {
+        tr: {
+            subtitle: "Elektrik-Elektronik Mühendisliği Öğrencisi & Yazılım Geliştirici",
+            titleAbout: "Hakkımda",
+            descAbout1: "Donanım ve yazılımın kesişim noktasına odaklanmış bir Elektrik-Elektronik Mühendisliği öğrencisiyim. Yüksek performanslı gömülü sistemler, gerçek zamanlı işletim mimarileri (RTOS), Linux tabanlı platform entegrasyonu ve otonom, kontrol odaklı robotik geliştirme alanlarında çalışıyorum.",
+            descAbout2: "GreenHouse-OS & SwarmAgri (TEKNOFEST platformları) bünyesinde Yazılım Sorumlusu olarak görev alıyor, açık kaynaklı araçlara ve özelleştirilmiş işletim sistemi deneyimlerine katkıda bulunuyorum.",
+            titleTech: "Teknik Uzmanlıklar",
+            techLang: "Programlama Dilleri",
+            techHw: "Donanım & Gömülü",
+            techTools: "Araçlar & Ortamlar",
+            titleProjects: "Öne Çıkan Projeler",
+            projOmen: "GNU/Linux üzerinde çalışan HP Omen/Victus dizüstü bilgisayarlar için fan hızlarını, güç profillerini ve temel donanım seçeneklerini yapılandırmak üzere tasarlanmış açık kaynaklı performans yönetim aracı.",
+            projSwarm: "Dağıtık koordinat tabanlı fikir birliği (consensus) algoritmaları kullanan, hassas tarım manevraları için optimize edilmiş çoklu ajan (multi-agent) tarım robotiği kontrol ve koordinasyon çerçevesi.",
+            projDrone: "Yakın mesafe ürün izleme ve hassas tarım operasyonları için geliştirilen, gücünü ESP32-S3 mikrodenetleyiciden alan, maliyet etkin ve yüksek hassasiyetli uçuş platformu.",
+            linkGithub: "GitHub Profili",
+            btn: "EN"
+        },
+        en: {
+            subtitle: "Electrical-Electronics Engineering Student & Software Developer",
+            titleAbout: "About Me",
+            descAbout1: "A highly focused Electrical-Electronics Engineering student dedicating energy to the intersection of hardware and software. Specializing in high-performance embedded systems, real-time operating architectures, Linux-based platform integration, and autonomous, control-oriented robotics development.",
+            descAbout2: "Software Manager at GreenHouse-OS & SwarmAgri (TEKNOFEST platforms). Linux & GNOME Enthusiast – actively contributing to open-source tools and customized OS experiences.",
+            titleTech: "Technical Ecosystem",
+            techLang: "Programming Languages",
+            techHw: "Hardware & Embedded",
+            techTools: "Tools & Environments",
+            titleProjects: "Featured Projects",
+            projOmen: "Linux Utility & Performance Manager. An open-source utility designed to configure fan speeds, power profiles, and core hardware options for HP Omen/Victus laptops running GNU/Linux.",
+            projSwarm: "TEKNOFEST | Multi-Agent Agriculture Robotics. A swarm robotics control and coordination framework tailored to precision agricultural maneuvers, using distributed coordinate-based consensus.",
+            projDrone: "TÜBİTAK 2209-A | Precision Farming Flight Platform. Developing a custom, cost-effective, high-precision flight platform driven by an ESP32-S3 microcontroller, optimized for close-range crop monitoring.",
+            linkGithub: "GitHub Profile",
+            btn: "TR"
+        }
+    };
+
+    let currentLang = 'tr';
+
+    function updateDOM(lang) {
+        document.getElementById('subtitle').innerText = translations[lang].subtitle;
+        document.getElementById('title-about').innerText = translations[lang].titleAbout;
+        document.getElementById('desc-about-1').innerText = translations[lang].descAbout1;
+        document.getElementById('desc-about-2').innerHTML = translations[lang].descAbout2;
+        document.getElementById('title-tech').innerText = translations[lang].titleTech;
+        document.getElementById('tech-lang').innerText = translations[lang].techLang;
+        document.getElementById('tech-hw').innerText = translations[lang].techHw;
+        document.getElementById('tech-tools').innerText = translations[lang].techTools;
+        document.getElementById('title-projects').innerText = translations[lang].titleProjects;
+        document.getElementById('proj-omen').innerText = translations[lang].projOmen;
+        document.getElementById('proj-swarm').innerText = translations[lang].projSwarm;
+        document.getElementById('proj-drone').innerText = translations[lang].projDrone;
+        document.getElementById('link-github').innerText = translations[lang].linkGithub;
+        document.getElementById('langBtn').innerText = translations[lang].btn;
+        document.documentElement.lang = lang;
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'tr' ? 'en' : 'tr';
+        updateDOM(currentLang);
+    }
+
+    // Tarayıcı dilini algıla (İlk açılışta çalışır)
+    window.onload = function() {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang.startsWith('tr')) {
+            currentLang = 'tr';
+        } else {
+            currentLang = 'en';
+        }
+        updateDOM(currentLang);
+    };
+</script>
 
 </body>
 </html>
