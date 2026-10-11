@@ -19,12 +19,12 @@ a{color:inherit;text-decoration:none}
 body::before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background-image:linear-gradient(rgba(120,165,205,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(120,165,205,.05) 1px,transparent 1px),linear-gradient(rgba(120,165,205,.09) 1px,transparent 1px),linear-gradient(90deg,rgba(120,165,205,.09) 1px,transparent 1px);background-size:32px 32px,32px 32px,160px 160px,160px 160px;background-position:var(--gx,0) var(--gy,0),var(--gx,0) var(--gy,0),var(--gx,0) var(--gy,0),var(--gx,0) var(--gy,0);-webkit-mask-image:radial-gradient(ellipse at 50% 35%,#000 25%,transparent 85%);mask-image:radial-gradient(ellipse at 50% 35%,#000 25%,transparent 85%)}
 /* Modern Glass Card Styles */
 .fact,.col,.pcard,.ph{position:relative}
-#bar{position:fixed;top:0;left:0;height:2px;width:0;background:var(--acc);z-index:60}
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:linear-gradient(90deg,var(--acc),#00bbf9);box-shadow:0 0 10px var(--acc);z-index:80;border-radius:0 2px 2px 0}
 section,.mqw{position:relative}
 
-/* ---------- header / menu ---------- */
-header{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:calc(18px + env(safe-area-inset-top)) max(5vw,env(safe-area-inset-left)) 18px;transition:background .35s,border-color .35s;border-bottom:1px solid transparent}
-header.s{background:rgba(10,15,21,.94);border-color:var(--line)}
+/* ---------- floating header / menu ---------- */
+header{position:fixed;top:18px;left:50%;transform:translateX(-50%);width:min(1240px,calc(100% - 36px));z-index:70;display:flex;justify-content:space-between;align-items:center;padding:12px 26px;background:rgba(13,21,34,.78);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.14);border-radius:24px;box-shadow:0 14px 38px -10px rgba(0,0,0,.7),inset 0 1px 0 rgba(255,255,255,.12);transition:all .35s var(--spring)}
+header.s{top:12px;background:rgba(10,16,24,.92);border-color:rgba(79,209,197,.38);box-shadow:0 18px 45px -10px rgba(0,0,0,.85),0 0 25px -6px rgba(0,245,212,.18),inset 0 1px 0 rgba(255,255,255,.16)}
 .logo{display:flex;align-items:center;gap:12px}
 .logo .mark{width:38px;height:38px;display:block;flex:none}
 .logo .wm{font:700 1.08rem var(--mono);letter-spacing:.24em;color:var(--txt);padding-left:12px;border-left:1px solid var(--line);line-height:1}
@@ -37,19 +37,19 @@ nav a:hover{color:var(--txt)}
 .lang{display:flex;border:1px solid var(--line);border-radius:4px;overflow:hidden}
 .lang button{background:none;border:0;border-right:1px solid var(--line);font:600 .7rem var(--mono);padding:8px 11px;cursor:pointer;color:var(--mut);letter-spacing:1px;transition:.2s}.lang button:last-child{border-right:0}.lang button:hover{color:var(--txt)}
 .lang button.on{background:var(--acc);color:#0a0f15}
-#burger{display:none;width:44px;height:44px;background:none;border:0;cursor:pointer;position:relative;z-index:70}
+#burger{display:none;width:44px;height:44px;background:none;border:0;cursor:pointer;position:relative;z-index:75}
 #burger i{position:absolute;left:11px;right:11px;height:2px;background:var(--txt);transition:.4s var(--spring)}
 #burger i:nth-child(1){top:16px}#burger i:nth-child(2){top:26px}
 #burger.open i:nth-child(1){top:21px;transform:rotate(45deg)}
 #burger.open i:nth-child(2){top:21px;transform:rotate(-45deg)}
-#menu{position:fixed;inset:0;z-index:60;background:rgba(10,15,21,.98);display:flex;flex-direction:column;justify-content:center;padding:0 9vw;clip-path:circle(0 at calc(100% - 40px) 40px);transition:clip-path .7s cubic-bezier(.7,0,.2,1);visibility:hidden}
+#menu{position:fixed;inset:0;z-index:65;background:rgba(10,15,21,.98);display:flex;flex-direction:column;justify-content:center;padding:0 9vw;clip-path:circle(0 at calc(100% - 40px) 40px);transition:clip-path .7s cubic-bezier(.7,0,.2,1);visibility:hidden}
 #menu.open{clip-path:circle(150% at calc(100% - 40px) 40px);visibility:visible}
 #menu a{font:600 clamp(2.2rem,10vw,3.6rem)/1.3 var(--sans);letter-spacing:-.02em;transform:translateY(40px);opacity:0;transition:transform .7s var(--spring),opacity .5s}
 #menu.open a{transform:none;opacity:1}
 #menu.open a:nth-child(1){transition-delay:.25s}#menu.open a:nth-child(2){transition-delay:.33s}#menu.open a:nth-child(3){transition-delay:.41s}#menu.open a:nth-child(4){transition-delay:.49s}
 #menu .lang{margin-top:34px}
 #menu .lang{align-self:flex-start}#menu .lang button{font-size:.9rem;padding:11px 16px}
-@media(max-width:900px){nav>a,nav>.lang{display:none}#burger{display:block}}
+@media(max-width:900px){header{top:12px;width:calc(100% - 24px);padding:10px 18px;border-radius:18px}header.s{top:8px}nav>a,nav>.lang{display:none}#burger{display:block}}
 
 /* ---------- type ---------- */
 .lbl{font:.74rem var(--mono);letter-spacing:.2em;color:var(--acc);text-transform:uppercase;margin-bottom:22px;display:flex;align-items:center;gap:12px}
@@ -603,9 +603,9 @@ function updateProjectMotion(){
     if(dist < bestDist){ bestDist=dist; bestIdx=i; }
 
     if(!reduce){
-      const tilt = Math.max(-14, Math.min(14, diff * -16));
-      const scale = Math.max(0.94, 1 - dist * 0.08);
-      const op = Math.max(0.45, 1 - dist * 0.4);
+      const tilt = Math.max(-7, Math.min(7, diff * -8));
+      const scale = Math.max(0.96, 1 - dist * 0.05);
+      const op = Math.max(0.75, 1 - dist * 0.22);
       c.style.transform = `scale(${scale.toFixed(3)}) rotateY(${tilt.toFixed(2)}deg)`;
       c.style.opacity = op.toFixed(2);
     }
@@ -623,20 +623,6 @@ function scrollByCard(dir){
 }
 if(pPrev) pPrev.onclick=()=>scrollByCard(-1);
 if(pNext) pNext.onclick=()=>scrollByCard(1);
-
-/* Touchpad / mouse wheel integration:
-   If scrolling horizontally (deltaX), native handles it.
-   If vertical wheel over project viewport: smartly route deltaY to horizontal scroll if inside viewport bounds! */
-pViewport.addEventListener('wheel', (e)=>{
-  if(Math.abs(e.deltaX) >= Math.abs(e.deltaY)) return; // Touchpad horizontal swipe: native handles smoothly!
-  const sl = pViewport.scrollLeft, max = pViewport.scrollWidth - pViewport.clientWidth;
-  const canLeft = sl > 4 && e.deltaY < 0;
-  const canRight = sl < max - 4 && e.deltaY > 0;
-  if(canLeft || canRight){
-    e.preventDefault();
-    pViewport.scrollLeft += e.deltaY;
-  }
-}, {passive:false});
 
 /* Pointer / Mouse drag to pan */
 let isPointerDown=false, startX=0, startScrollLeft=0, moved=false;
@@ -763,133 +749,135 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),hd=document.getElementById('hd'),
 const heroOut=document.getElementById('heroOut'),zin=document.getElementById('zin');
 const motionSections=[...document.querySelectorAll('.motion-sec')];
 let lastScrollY=scrollY, scrollVelocity=0, wavePhase=0;
+let smoothCamGlideX=0;
 let t0=performance.now();
 
 function frame(){
   const y=scrollY, vh=innerHeight, t=(performance.now()-t0)/1000;
   const dy = y - lastScrollY;
   lastScrollY = y;
-  scrollVelocity += (dy - scrollVelocity) * 0.18;
 
-  /* Oscilloscope reactive phase: scrubs forward on scroll down, scrubs backward on scroll up! */
-  wavePhase += scrollVelocity * 0.007 + 0.003;
+  // Damped scroll velocity: eliminates wild spikes on sudden trackpad flicks
+  scrollVelocity += (clamp(dy, -70, 70) - scrollVelocity) * 0.14;
+
+  // Gentle, calm oscilloscope phase progression: slow & hypnotic
+  const velScrub = clamp(scrollVelocity, -25, 25) * 0.0004;
+  wavePhase += velScrub + 0.0005;
 
   hd.classList.toggle('s', y>30);
   bar.style.width=y/Math.max(1,document.documentElement.scrollHeight-vh)*100+'%';
 
-  /* Hero: pulls back into 3D space with zoom-back depth and tilts slightly as you scroll down */
+  /* Hero: pulls back into 3D space with subtle depth */
   if(!reduce && heroOut){
     const s = clamp(y / (vh * 0.85), 0, 1);
-    const zScale = 1 - s * 0.18;
-    const zTransY = -s * 80;
-    const zTilt = s * 6;
+    const zScale = 1 - s * 0.14;
+    const zTransY = -s * 55;
+    const zTilt = s * 3.5;
     heroOut.style.transform = `scale(${zScale.toFixed(3)}) translateY(${zTransY.toFixed(1)}px) rotateX(${zTilt.toFixed(2)}deg)`;
     heroOut.style.opacity = (1 - s * 1.15).toFixed(3);
-    heroOut.style.filter = s > 0.04 ? `blur(${(s * 10).toFixed(1)}px)` : 'none';
+    heroOut.style.filter = s > 0.04 ? `blur(${(s * 7).toFixed(1)}px)` : 'none';
   }
 
   /* Marquees: interactive opposite slide */
-  mq1.style.transform = `translateX(${(-((y*0.6 + t*28)%mqP)).toFixed(1)}px)`;
-  mq2.style.transform = `translateX(${(-mqP + ((y*0.6 + t*28)%mqP)).toFixed(1)}px)`;
+  mq1.style.transform = `translateX(${(-((y*0.35 + t*16)%mqP)).toFixed(1)}px)`;
+  mq2.style.transform = `translateX(${(-mqP + ((y*0.35 + t*16)%mqP)).toFixed(1)}px)`;
 
   /* 3D Camera Section Kinematics:
-     Directional glide requested by user:
+     Damped smooth directional glide (never freaks out on fast swipes):
      - Transition 01 (About) -> 02 (Projects): glides to the RIGHT (01 exits left, 02 sweeps in from right)
      - Transition 02 (Projects) -> 03 (Skills): glides to the LEFT (02 exits right, 03 sweeps in from left)
      - Transition 03 (Skills) -> 04 (Contact): drops STRAIGHT DOWN vertically into 04 zoom depth
   */
-  let camGlideX = 0;
+  let targetCamGlideX = 0;
   if(!reduce){
-    const maxSlide = Math.min(innerWidth * 0.28, 280);
+    // Elegant max lateral slide distance (controlled, never disorienting)
+    const maxSlide = Math.min(innerWidth * 0.15, 140);
 
     motionSections.forEach((sec)=>{
       const r = sec.getBoundingClientRect();
       const secCenter = r.top + r.height / 2;
       const viewCenter = vh / 2;
-      // off: -1 when scrolled past top, 0 when centered, +1 when entering from bottom
-      const off = clamp((secCenter - viewCenter) / (vh * 0.75), -1.5, 1.5);
+      // Clamped normalized offset (-1.2 to +1.2)
+      const off = clamp((secCenter - viewCenter) / (vh * 0.75), -1.2, 1.2);
       const aoff = Math.abs(off);
 
-      if(aoff < 1.45){
-        // Pull-back scale when moving away from center (depth sensation)
-        const scale = 1 - Math.min(0.12, Math.pow(Math.min(1.1, aoff), 2) * 0.09);
-        const tiltX = clamp(off * 5, -7, 7);
+      if(aoff < 1.35){
+        // Sinusoidal easing curve: zero velocity derivative at extrema prevents sudden stops/starts
+        const slideCurve = Math.sin(clamp(off, -1, 1) * (Math.PI * 0.5));
+        const scale = 1 - Math.min(0.08, Math.pow(aoff, 2) * 0.06);
+        const tiltX = clamp(off * 3.5, -4, 4);
         let slideX = 0;
         let tiltY = 0;
 
         if(sec.id === 'about'){
-          // 01 Hakkımda:
-          // off > 0: entering from Hero (vertical entry)
-          // off < 0: scrolling down towards 02 (Projects) -> page glides RIGHT, so 01 glides LEFT
           if(off < 0){
-            slideX = off * maxSlide;
-            tiltY = clamp(off * 6, -7, 0);
-            camGlideX += Math.abs(off) * 55;
+            // 01 exits left
+            slideX = slideCurve * maxSlide;
+            tiltY = clamp(slideCurve * 3.5, -4, 0);
+            targetCamGlideX += Math.abs(slideCurve) * 35;
           }
         } else if(sec.id === 'projects'){
-          // 02 Projeler:
-          // off > 0: coming in from 01 -> glides in from the RIGHT!
-          // off < 0: leaving towards 03 -> glides off to the RIGHT as camera pans LEFT!
           if(off > 0){
-            slideX = off * maxSlide;
-            tiltY = clamp(off * -5, -6, 0);
-            camGlideX += off * 55;
+            // 02 sweeps in from right
+            slideX = slideCurve * maxSlide;
+            tiltY = clamp(slideCurve * -3, -4, 0);
+            targetCamGlideX += slideCurve * 35;
           } else {
-            slideX = -off * maxSlide;
-            tiltY = clamp(-off * 5, 0, 6);
-            camGlideX -= Math.abs(off) * 55;
+            // 02 sweeps off to right
+            slideX = -slideCurve * maxSlide;
+            tiltY = clamp(-slideCurve * 3, 0, 4);
+            targetCamGlideX -= Math.abs(slideCurve) * 35;
           }
         } else if(sec.id === 'skills'){
-          // 03 Beceriler:
-          // off > 0: coming in from 02 -> glides in from the LEFT!
-          // off < 0: leaving towards 04 -> "ve tekrar aşağıya insin": pure vertical!
           if(off > 0){
-            slideX = -off * maxSlide;
-            tiltY = clamp(off * 5, 0, 6);
-            camGlideX -= off * 55;
+            // 03 sweeps in from left
+            slideX = -slideCurve * maxSlide;
+            tiltY = clamp(slideCurve * 3, 0, 4);
+            targetCamGlideX -= slideCurve * 35;
           } else {
-            // Pure vertical descent towards Contact
+            // Downward descent towards Contact
             slideX = 0;
             tiltY = 0;
           }
         } else if(sec.id === 'contact'){
-          // 04 İletişim:
-          // Pure vertical zoom-in
           slideX = 0;
           tiltY = 0;
         }
 
         sec.style.transform = `perspective(1200px) scale(${scale.toFixed(3)}) translate3d(${slideX.toFixed(1)}px, 0, 0) rotateX(${tiltX.toFixed(2)}deg) rotateY(${tiltY.toFixed(2)}deg)`;
 
-        // Parallax inside the section columns
+        // Calm parallax inside section columns
         const layerL = sec.querySelector('.m-layer-l');
         const layerR = sec.querySelector('.m-layer-r');
-        if(layerL) layerL.style.transform = `translate3d(${(off * -24).toFixed(1)}px, 0, 0)`;
-        if(layerR) layerR.style.transform = `translate3d(${(off * 24).toFixed(1)}px, 0, 0)`;
+        if(layerL) layerL.style.transform = `translate3d(${(slideCurve * -12).toFixed(1)}px, 0, 0)`;
+        if(layerR) layerR.style.transform = `translate3d(${(slideCurve * 12).toFixed(1)}px, 0, 0)`;
       } else {
         sec.style.transform = 'none';
       }
     });
   }
 
+  // Smooth lerp on camera glide offset (eliminates rapid jitter/shake)
+  smoothCamGlideX += (targetCamGlideX - smoothCamGlideX) * 0.12;
+
   /* Contact: zooms in from depth */
   if(zin){
     const zr=zin.getBoundingClientRect(), zp=clamp((vh-zr.top)/(vh*.75), 0, 1), ez=1-Math.pow(1-zp, 3);
-    zin.style.transform=`scale(${(.75+.25*ez).toFixed(3)}) translateY(${((1-ez)*40).toFixed(1)}px)`;
+    zin.style.transform=`scale(${(.8+.2*ez).toFixed(3)}) translateY(${((1-ez)*30).toFixed(1)}px)`;
     zin.style.opacity=ez.toFixed(3);
-    zin.style.filter=zp<.96?`blur(${((1-ez)*12).toFixed(1)}px)`:'none';
+    zin.style.filter=zp<.96?`blur(${((1-ez)*8).toFixed(1)}px)`:'none';
   }
 
   /* Blueprint grid scroll position & lateral glide */
-  document.documentElement.style.setProperty('--gy', (-y*0.22)+'px');
-  document.documentElement.style.setProperty('--gx', (camGlideX*0.35)+'px');
+  document.documentElement.style.setProperty('--gy', (-y*0.18)+'px');
+  document.documentElement.style.setProperty('--gx', (smoothCamGlideX*0.25)+'px');
 
-  /* Render multi-color reactive oscilloscope with lateral camera drift */
-  renderOscilloscope(wavePhase, t, Math.abs(scrollVelocity), camGlideX);
+  /* Render multi-color reactive oscilloscope with damped camera drift */
+  renderOscilloscope(wavePhase, t, Math.abs(scrollVelocity), smoothCamGlideX);
   requestAnimationFrame(frame);
 }
 
-/* ---- Multi-Color Reactive Oscilloscope Engine ---- */
+/* ---- Multi-Color Reactive Oscilloscope Engine (Optimized & Calm) ---- */
 const cv=document.getElementById('rings'), cx=cv.getContext('2d');
 let W, H, dpr=Math.min(devicePixelRatio||1, innerWidth<900?1.2:2);
 
@@ -901,28 +889,24 @@ function rs(){
 addEventListener('resize', rs);
 rs();
 
-/* Color palettes for the 4 oscilloscope beam channels:
-   Channel 1: Electric Cyan & Mint
-   Channel 2: Neon Magenta / Electric Violet
-   Channel 3: Radiant Amber / Sun Gold
-   Channel 4: Deep Sky Blue / Sapphire */
+/* Color palettes for the 4 oscilloscope beam channels (calm speeds & frequencies) */
 const waveChannels = [
-  { y: 0.22, baseAmp: 38, freq: 0.0055, speed: 0.45, col1: '#00f5d4', col2: '#00bbf9', width: 2.2, glow: 'rgba(0,245,212,0.6)', alpha: 0.42 },
-  { y: 0.48, baseAmp: 54, freq: 0.0040, speed: -0.35, col1: '#f72585', col2: '#7209b7', width: 2.0, glow: 'rgba(247,37,133,0.5)', alpha: 0.38 },
-  { y: 0.74, baseAmp: 42, freq: 0.0062, speed: 0.60, col1: '#ffbe0b', col2: '#fb5607', width: 2.0, glow: 'rgba(255,190,11,0.5)', alpha: 0.35 },
-  { y: 0.90, baseAmp: 30, freq: 0.0075, speed: -0.50, col1: '#4361ee', col2: '#4cc9f0', width: 1.8, glow: 'rgba(67,97,238,0.5)', alpha: 0.30 }
+  { y: 0.22, baseAmp: 30, freq: 0.0042, speed: 0.12, col1: '#00f5d4', col2: '#00bbf9', width: 2.0, glow: 'rgba(0,245,212,0.5)', alpha: 0.38 },
+  { y: 0.48, baseAmp: 42, freq: 0.0032, speed: -0.10, col1: '#f72585', col2: '#7209b7', width: 1.8, glow: 'rgba(247,37,133,0.4)', alpha: 0.34 },
+  { y: 0.74, baseAmp: 34, freq: 0.0046, speed: 0.14, col1: '#ffbe0b', col2: '#fb5607', width: 1.8, glow: 'rgba(255,190,11,0.4)', alpha: 0.30 },
+  { y: 0.90, baseAmp: 24, freq: 0.0055, speed: -0.12, col1: '#4361ee', col2: '#4cc9f0', width: 1.6, glow: 'rgba(67,97,238,0.4)', alpha: 0.26 }
 ];
 
 function renderOscilloscope(phase, t, velocity, driftX=0){
   cx.clearRect(0, 0, W, H);
 
-  // Velocity boost: waves swell and vibrate when scrolling fast!
-  const ampBoost = 1 + Math.min(1.8, velocity * 0.04);
+  // Subtle velocity excitation pulse: never blows up
+  const ampBoost = 1 + Math.min(0.25, velocity * 0.006);
 
-  // Background subtle gradient glow behind the active waves
-  const centerGlow = cx.createRadialGradient(W*0.5 + driftX*0.3, H*0.5, 50, W*0.5 + driftX*0.3, H*0.5, Math.hypot(W,H)*0.6);
-  centerGlow.addColorStop(0, 'rgba(0, 245, 212, 0.04)');
-  centerGlow.addColorStop(0.5, 'rgba(114, 9, 183, 0.03)');
+  // Subtle background glow behind the active waves
+  const centerGlow = cx.createRadialGradient(W*0.5 + driftX*0.2, H*0.5, 40, W*0.5 + driftX*0.2, H*0.5, Math.hypot(W,H)*0.55);
+  centerGlow.addColorStop(0, 'rgba(0, 245, 212, 0.035)');
+  centerGlow.addColorStop(0.5, 'rgba(114, 9, 183, 0.025)');
   centerGlow.addColorStop(1, 'rgba(10, 15, 21, 0)');
   cx.fillStyle = centerGlow;
   cx.fillRect(0, 0, W, H);
@@ -933,7 +917,6 @@ function renderOscilloscope(phase, t, velocity, driftX=0){
     const amp = ch.baseAmp * ampBoost;
     const waveY = H * ch.y;
 
-    // Linear gradient for each beam
     const grad = cx.createLinearGradient(0, 0, W, 0);
     grad.addColorStop(0, ch.col1);
     grad.addColorStop(0.5, ch.col2);
@@ -943,17 +926,15 @@ function renderOscilloscope(phase, t, velocity, driftX=0){
     let prevX = 0, prevY = waveY;
 
     for(let x=0; x<=W+8; x+=8){
-      // Harmonics synthesis: main sine + secondary 3rd harmonic + scroll-reactive wavePhase + lateral camera drift!
-      const sampleX = x - driftX * 0.6;
-      const p = sampleX * ch.freq + phase * 4 + t * ch.speed;
-      const harmonic = Math.sin(p * 2.8 - t * 0.8) * (amp * 0.32);
-      const subHarmonic = Math.cos(p * 0.5 + t * 0.4) * (amp * 0.15);
+      const sampleX = x - driftX * 0.4;
+      const p = sampleX * ch.freq + phase * 0.85 + t * ch.speed;
+      const harmonic = Math.sin(p * 2.0 - t * 0.25) * (amp * 0.2);
+      const subHarmonic = Math.cos(p * 0.5 + t * 0.15) * (amp * 0.1);
       const yPos = waveY + (Math.sin(p) * amp) + harmonic + subHarmonic;
 
       if(x === 0){
         cx.moveTo(x, yPos);
       } else {
-        // Smooth quadratic curve between sample points
         const xc = (prevX + x) / 2;
         const yc = (prevY + yPos) / 2;
         cx.quadraticCurveTo(prevX, prevY, xc, yc);
@@ -979,10 +960,10 @@ function renderOscilloscope(phase, t, velocity, driftX=0){
     cx.globalAlpha = ch.alpha;
     cx.stroke();
 
-    // Signal peak pulse nodes along the beam
-    const peakX = ((t * (60 + idx*30) + phase * 200) % W + W) % W;
-    const peakP = peakX * ch.freq + phase * 4 + t * ch.speed;
-    const peakY = waveY + (Math.sin(peakP) * amp) + (Math.sin(peakP * 2.8) * amp * 0.32);
+    // Signal peak pulse nodes along the beam (calm speeds)
+    const peakX = ((t * (30 + idx*15) + phase * 40) % W + W) % W;
+    const peakP = peakX * ch.freq + phase * 0.85 + t * ch.speed;
+    const peakY = waveY + (Math.sin(peakP) * amp) + (Math.sin(peakP * 2.0) * amp * 0.2);
 
     cx.fillStyle = '#ffffff';
     cx.shadowColor = ch.col1;
