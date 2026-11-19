@@ -4,562 +4,1207 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Yunus Emre Yılmaz</title>
-<meta name="description" content="Yunus Emre Yılmaz – Electrical & Electronics Engineering student. Embedded systems, autonomous robotics and system software.">
-<meta name="theme-color" content="#f3eee6">
+<meta name="description" content="Yunus Emre Yılmaz — Electrical &amp; Electronics Engineering student. Embedded systems, autonomous robotics, and Linux system software.">
+<meta name="theme-color" content="#f7f5f0">
+<link rel="icon" href="avatar.png" type="image/png">
 <script>document.documentElement.dataset.theme=localStorage.getItem('theme')||'light'</script>
-<link rel="preload" as="image" href="images/hero.webp" type="image/webp">
+<link rel="preload" as="image" href="images/about.webp" type="image/webp">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#f3eee6;--card:#fffdf9;--txt:#14201e;--txt2:#46514e;--mut:#76807c;--line:rgba(20,32,30,.12);--acc:#0e8f84;--on:#fff;--hbg:rgba(243,238,230,.92);--btnbg:rgba(20,32,30,.04);--shadow:0 26px 50px -30px rgba(20,32,30,.4);--orb1:rgba(14,143,132,.16);--orb2:rgba(255,170,90,.18);--ease:cubic-bezier(.22,1,.36,1);--sans:'Plus Jakarta Sans',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;--pad:clamp(20px,6vw,80px);--r:28px}
-[data-theme=dark]{--bg:#0a0f15;--card:#101923;--txt:#e9eff5;--txt2:#b5c0cc;--mut:#8b9aab;--line:rgba(255,255,255,.09);--acc:#4fd1c5;--on:#07100f;--hbg:rgba(10,15,21,.92);--btnbg:rgba(255,255,255,.03);--shadow:0 26px 50px -30px #000;--orb1:rgba(79,209,197,.2);--orb2:rgba(90,120,255,.15)}
-*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-html{scroll-behavior:smooth;overflow-x:clip;scroll-snap-type:y mandatory}
-body{background:var(--bg);color:var(--txt);font-family:var(--sans);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip;transition:background .5s,color .5s}
-a{color:inherit;text-decoration:none}
-ul{list-style:none}
-img{display:block;max-width:100%}
+:root {
+  --bg: #f7f5f0;
+  --surface: #efece4;
+  --card: #fdfcf9;
+  --ink: #161614;
+  --ink-2: #4b4a45;
+  --ink-3: #78766e;
+  --rule: #ddd8cc;
+  --rule-strong: #c4beb0;
+  --accent: #b84a27;
+  --accent-soft: rgba(184, 74, 39, 0.09);
+  --hdr-bg: rgba(247, 245, 240, 0.9);
+  --serif: 'Newsreader', Georgia, 'Times New Roman', serif;
+  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+  --max: 1080px;
+  --gutter: clamp(20px, 5vw, 56px);
+}
 
-.orb{position:fixed;z-index:-1;border-radius:50%;pointer-events:none;will-change:transform}
-.o1{width:70vmax;height:70vmax;top:-30vmax;left:-25vmax;background:radial-gradient(circle,var(--orb1),transparent 65%);animation:drift1 22s ease-in-out infinite alternate}
-.o2{width:60vmax;height:60vmax;bottom:-30vmax;right:-25vmax;background:radial-gradient(circle,var(--orb2),transparent 65%);animation:drift2 26s ease-in-out infinite alternate}
-@keyframes drift1{to{transform:translate3d(14vmax,10vmax,0) scale(1.15)}}
-@keyframes drift2{to{transform:translate3d(-12vmax,-10vmax,0) scale(1.1)}}
-#bar{position:fixed;top:0;left:0;right:0;height:2px;background:var(--acc);transform:scaleX(0);transform-origin:left;z-index:90}
+[data-theme="dark"] {
+  --bg: #121211;
+  --surface: #1a1917;
+  --card: #171615;
+  --ink: #efece6;
+  --ink-2: #b4afa6;
+  --ink-3: #837e75;
+  --rule: #282623;
+  --rule-strong: #3d3a35;
+  --accent: #e07a52;
+  --accent-soft: rgba(224, 122, 82, 0.12);
+  --hdr-bg: rgba(18, 18, 17, 0.9);
+}
 
-/* header */
-header{position:fixed;top:0;left:0;right:0;z-index:80;display:flex;justify-content:space-between;align-items:center;padding:12px var(--pad);background:var(--hbg);border-bottom:1px solid transparent;transition:border-color .3s,background .5s}
-header.s{border-color:var(--line)}
-.logo{font-weight:700;letter-spacing:.2em;display:flex;align-items:center;gap:12px}
-#dock{width:38px;height:38px;flex:none}
-.logo b{font-weight:700;opacity:0;will-change:transform,opacity}
-.logo i{width:8px;height:8px;border-radius:50%;background:var(--acc);animation:pulse 2.4s ease-in-out infinite}
-@keyframes pulse{50%{transform:scale(1.7);opacity:.35}}
-nav{display:flex;align-items:center;gap:26px}
-nav a{font-size:.88rem;color:var(--mut);position:relative;transition:color .25s}
-nav a::after{content:"";position:absolute;left:0;right:0;bottom:-4px;height:1px;background:var(--acc);transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
-nav a:hover{color:var(--txt)}nav a:hover::after{transform:scaleX(1)}
-.tools{display:flex;gap:6px;align-items:center}
-.lang{display:flex;gap:4px}
-.lang button,.tg{background:none;border:1px solid var(--line);border-radius:10px;color:var(--mut);font:600 .72rem var(--sans);padding:6px 9px;cursor:pointer;transition:.25s}
-.tg{font-size:.95rem;line-height:1;padding:5px 9px}
-.lang button.on{background:var(--acc);border-color:var(--acc);color:var(--on)}
-.tg:hover,.lang button:hover{border-color:var(--acc);color:var(--acc)}
-.lang button.on:hover{color:var(--on)}
-#burger{display:none;width:44px;height:44px;background:none;border:0;cursor:pointer;position:relative}
-#burger i{position:absolute;left:11px;right:11px;height:2px;background:var(--txt);border-radius:2px;transition:transform .4s var(--ease),top .4s var(--ease)}
-#burger i:nth-child(1){top:17px}#burger i:nth-child(2){top:25px}
-#burger.open i:nth-child(1){top:21px;transform:rotate(45deg)}
-#burger.open i:nth-child(2){top:21px;transform:rotate(-45deg)}
-#menu{position:fixed;inset:0;z-index:70;background:var(--bg);display:flex;flex-direction:column;justify-content:center;gap:6px;padding:0 var(--pad);opacity:0;visibility:hidden;transition:opacity .35s,visibility .35s}
-#menu.open{opacity:1;visibility:visible}
-#menu a{font-size:clamp(2rem,10vw,3rem);font-weight:600;letter-spacing:-.02em;opacity:0;transform:translateY(24px);transition:opacity .5s,transform .6s var(--ease)}
-#menu.open a{opacity:1;transform:none}
-#menu.open a:nth-child(2){transition-delay:.06s}#menu.open a:nth-child(3){transition-delay:.12s}#menu.open a:nth-child(4){transition-delay:.18s}
-#menu .tools{margin-top:28px}
-@media(max-width:900px){nav>a,nav>.tools{display:none}#burger{display:block}}
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
-/* slides */
-.slide{min-height:100vh;min-height:100svh;scroll-snap-align:start;scroll-snap-stop:always;position:relative;display:flex;flex-direction:column;justify-content:center;padding:92px 0 56px}
-.slide>.wrap{width:100%}
-.wrap{max-width:1240px;margin:auto;padding:0 var(--pad)}
-.rv{opacity:0;transform:translate3d(0,44px,0) scale(.97);transition:opacity .7s var(--ease) var(--d,0s),transform .95s var(--ease) var(--d,0s)}
-.slide.act .rv{opacity:1;transform:none}
-#dots{position:fixed;right:clamp(6px,1.6vw,22px);top:50%;transform:translateY(-50%);z-index:60;display:flex;flex-direction:column;gap:4px}
-#dots button{width:22px;height:22px;background:none;border:0;cursor:pointer;position:relative}
-#dots button::after{content:"";position:absolute;left:50%;top:50%;width:6px;height:6px;margin:-3px;border-radius:50%;background:var(--mut);opacity:.5;transition:transform .4s var(--ease),background .3s,opacity .3s}
-#dots button.on::after{background:var(--acc);opacity:1;transform:scale(1.9)}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 76px;
+  overflow-x: clip;
+}
 
-/* images: zoom-out on slide entry */
-.zoom{position:relative;overflow:hidden;border-radius:var(--r);background:var(--card)}
-.zoom img{width:100%;height:100%;object-fit:cover;transform:scale(1.18);transition:transform 1.9s var(--ease)}
-.slide.act .zoom img{transform:none}
+body {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-size: 15.5px;
+  line-height: 1.68;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
-/* type */
-.lbl{font-size:.78rem;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:14px}
-h1{font-size:clamp(2.5rem,6.4vw,5.4rem);line-height:1.02;letter-spacing:-.04em;font-weight:700}
-h2{font-size:clamp(1.8rem,4vw,3.1rem);line-height:1.1;letter-spacing:-.03em;font-weight:700;margin-bottom:22px}
-.btns{display:flex;gap:10px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border:1px solid var(--line);border-radius:999px;font-weight:600;font-size:.88rem;background:var(--btnbg);transition:transform .35s var(--ease),border-color .3s,background .3s,color .3s}
-.btn:hover{transform:translateY(-3px);border-color:var(--acc);color:var(--acc)}
-.btn.main{background:var(--acc);border-color:var(--acc);color:var(--on)}
-.btn.main:hover{filter:brightness(1.1);color:var(--on)}
+a {
+  color: inherit;
+  text-decoration: none;
+}
 
-/* hero */
-#hero{padding:100px 0 84px}
-.hero-in{max-width:1240px;margin:auto;padding:0 var(--pad);width:100%;position:relative;z-index:2;color:#fff}
-.hero-in>div{max-width:680px}
-.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:40% center;z-index:0;animation:bgzoom 2.4s var(--ease) both}
-@keyframes bgzoom{from{transform:scale(1.14)}}
-#hero::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(5,10,12,.82),rgba(5,10,12,.45) 60%,rgba(5,10,12,.3)),linear-gradient(0deg,rgba(5,10,12,.6),transparent 40%)}
-#hero .mq{z-index:2;border-color:rgba(255,255,255,.18)}
-#hero .mq span{color:rgba(255,255,255,.7)}
-#hero .btn:not(.main){color:#fff;border-color:rgba(255,255,255,.4);background:rgba(255,255,255,.1)}
-#hero .btn:not(.main):hover{border-color:#7ae6dc;color:#7ae6dc}
-header:not(.s){background:transparent}
-header:not(.s) nav>a,header:not(.s) .tg,header:not(.s) .lang button:not(.on){color:#fff;border-color:rgba(255,255,255,.3)}
-header:not(.s) #burger i{background:#fff}
-.role{font-size:.78rem;font-weight:600;letter-spacing:.16em;color:#7ae6dc;margin-bottom:14px;animation:up .9s .15s var(--ease) both}
-h1 .ln{display:block;overflow:hidden;padding-bottom:.06em}
-h1 .ln span{display:block;animation:rise 1.1s var(--ease) both}
-h1 .ln:nth-child(1) span{animation-delay:.25s}
-h1 .ln:nth-child(2) span{animation-delay:.38s;color:rgba(255,255,255,.65);font-weight:500}
-@keyframes rise{from{transform:translate3d(0,110%,0)}}
-@keyframes up{from{opacity:0;transform:translate3d(0,20px,0)}}
-@keyframes wipe{from{clip-path:inset(100% 0 0 0 round var(--r))}}
-.lead{max-width:520px;color:rgba(255,255,255,.85);margin:20px 0 28px;font-size:clamp(.96rem,1.25vw,1.1rem);animation:up 1s .55s var(--ease) both}
-.hero-in .btns{animation:up 1s .7s var(--ease) both}
-.ph{width:clamp(84px,9vw,124px);aspect-ratio:1;visibility:hidden;margin-bottom:22px}
-#av{position:fixed;top:0;left:0;z-index:85;display:block;transform-origin:0 0;will-change:transform;animation:fade 1.1s .6s both}
-@keyframes fade{from{opacity:0}}
-#av::before{content:"";position:absolute;inset:-6px;border-radius:50%;background:conic-gradient(from 0deg,var(--acc),transparent 40%,transparent 60%,#5a78ff,var(--acc));animation:spin 8s linear infinite;will-change:transform}
-#av img{position:relative;width:100%;height:100%;object-fit:cover;border-radius:50%;border:5px solid var(--bg)}
-@keyframes spin{to{transform:rotate(360deg)}}
-@media(max-width:900px){.ph{width:84px;margin-bottom:14px}.lead{margin:14px 0 20px}}
+img {
+  display: block;
+  max-width: 100%;
+}
 
-/* marquee */
-.mq{position:absolute;z-index:2;left:0;right:0;bottom:0;overflow:hidden;border-top:1px solid var(--line);padding:14px 0}
-.mq div{display:flex;width:max-content;animation:mq 32s linear infinite}
-.mq span{padding:0 26px;font-size:.78rem;letter-spacing:.22em;color:var(--mut);white-space:nowrap}
-.mq span.d{padding:0;color:var(--acc)}
-@keyframes mq{to{transform:translate3d(-50%,0,0)}}
+button {
+  font: inherit;
+  color: inherit;
+}
 
-/* about */
-.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(24px,5vw,72px);align-items:center}
-.split .zoom{height:clamp(300px,66svh,600px);box-shadow:var(--shadow)}
-.split p{color:var(--txt2);margin-bottom:14px}
-.split p b{color:var(--txt);font-weight:600}
-@media(max-width:820px){.split{grid-template-columns:1fr;gap:20px}.split .zoom{height:clamp(150px,26svh,280px)}.split h2{margin-bottom:12px}}
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
 
-/* facts */
-.banner{height:clamp(130px,30svh,300px);margin-bottom:16px;box-shadow:var(--shadow)}
-.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,12,14,.72),rgba(6,12,14,.1))}
-.banner p{position:absolute;z-index:2;left:clamp(20px,4vw,48px);bottom:clamp(16px,3vw,36px);color:#fff;font-weight:700;font-size:clamp(1.3rem,3.6vw,2.8rem);letter-spacing:-.03em;line-height:1.1}
-.facts{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-@media(max-width:820px){.facts{grid-template-columns:repeat(2,1fr)}}
-.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:24px;transition:transform .45s var(--ease),border-color .3s,background .5s}
-@media(hover:hover){.card:hover{transform:translateY(-6px);border-color:var(--acc)}}
-.fact b{display:block;font-size:clamp(1.3rem,2.6vw,2rem);letter-spacing:-.03em;line-height:1.2}
-.fact span{font-size:.76rem;color:var(--mut);letter-spacing:.06em;text-transform:uppercase}
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  height: 62px;
+  background: var(--hdr-bg);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--rule);
+}
 
-/* projects */
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-@media(max-width:820px){.grid{grid-template-columns:1fr;gap:12px}}
-.pcard{position:relative;overflow:hidden;padding:0;display:flex;flex-direction:column;box-shadow:var(--shadow)}
-.pimg{height:clamp(130px,27svh,270px);border-radius:0}
-.pimg::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.35),transparent 45%)}
-.no{position:absolute;z-index:2;right:18px;top:10px;font-size:2.4rem;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1px rgba(255,255,255,.8)}
-.tag{position:absolute;z-index:2;left:16px;top:16px;font-size:.7rem;font-weight:600;letter-spacing:.14em;color:#fff;padding:5px 12px;background:rgba(0,0,0,.45);border-radius:999px}
-.pbody{padding:20px 24px 24px}
-.pcard h3{font-size:1.35rem;letter-spacing:-.02em;margin-bottom:10px}
-.pcard dl div{display:grid;grid-template-columns:76px 1fr;gap:12px;padding:9px 0;border-top:1px solid var(--line);font-size:.9rem}
-.pcard dt{font-size:.68rem;font-weight:600;letter-spacing:.12em;color:var(--acc);text-transform:uppercase;padding-top:3px}
-.pcard dd{color:var(--txt2)}
-.pcard dd.m{color:var(--mut)}
-@media(hover:hover){.slide.act .pcard:hover .zoom img{transform:scale(1.07);transition-duration:1s}}
-@media(max-width:820px){.pcard dl div:nth-child(2){display:none}.pbody{padding:14px 18px 16px}.pcard h3{font-size:1.15rem;margin-bottom:6px}.no{font-size:1.9rem}.pcard dl div{padding:7px 0;font-size:.85rem}}
+.hdr-in {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
 
-/* skills */
-.cols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-@media(max-width:820px){.cols{grid-template-columns:1fr}}
-.cols h4{font-size:.78rem;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:10px}
-.cols li{padding:10px 0;border-top:1px solid var(--line);transition:transform .35s var(--ease),color .3s}
-@media(hover:hover){.cols li:hover{transform:translateX(8px);color:var(--acc)}}
-.note{margin-top:18px;padding:22px 26px;border-radius:22px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--acc);color:var(--txt2);max-width:780px}
-.note b{color:var(--txt)}
+.identity {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  font-size: 0.94rem;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+}
 
-/* contact */
-#contact{padding-bottom:84px}
-.cpanel{min-height:clamp(320px,62svh,540px);display:flex;flex-direction:column;justify-content:flex-end;padding:clamp(24px,4.5vw,64px);color:#fff;box-shadow:var(--shadow)}
-.cpanel>img{position:absolute;inset:0}
-.cpanel::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(5,10,12,.85),rgba(5,10,12,.25) 70%)}
-.cpanel>*:not(img){position:relative;z-index:2}
-.cpanel .lbl{color:#7ae6dc}
-.big{font-size:clamp(2.2rem,7vw,5.4rem);line-height:1.04;letter-spacing:-.04em;font-weight:700;margin-bottom:14px}
-.sub{color:rgba(255,255,255,.8);max-width:520px;margin-bottom:24px}
-.cpanel .btn{color:#fff;border-color:rgba(255,255,255,.35);background:rgba(255,255,255,.08)}
-.cpanel .btn.main{background:#4fd1c5;border-color:#4fd1c5;color:#07100f}
-footer{position:absolute;left:0;right:0;bottom:0;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:22px var(--pad);font-size:.74rem;letter-spacing:.1em;color:var(--mut)}
+.identity img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule-strong);
+}
 
-.loc{display:inline-flex;align-items:center;gap:10px}
-.loc svg{color:var(--acc)}
-.loc b{font-weight:600;color:var(--txt)}
-.loc em{font-style:normal}
-.loc i{width:4px;height:4px;border-radius:50%;background:var(--acc)}
-[dir=rtl] .mq div,[dir=rtl] #bar{direction:ltr}
-@media(prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}
-  .slide .rv{opacity:1;transform:none}.zoom img{transform:none!important}
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav a {
+  font-size: 0.875rem;
+  color: var(--ink-2);
+  transition: color 0.15s;
+}
+
+.nav a:hover {
+  color: var(--ink);
+}
+
+.tools {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.lang button {
+  background: transparent;
+  border: 0;
+  border-inline-end: 1px solid var(--rule);
+  padding: 4px 8px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  font-weight: 500;
+  color: var(--ink-3);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.lang button:last-child {
+  border-inline-end: 0;
+}
+
+.lang button:hover {
+  color: var(--ink);
+  background: var(--surface);
+}
+
+.lang button.on {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+.tg {
+  width: 30px;
+  height: 30px;
+  display: inline-grid;
+  place-items: center;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  color: var(--ink-2);
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.tg:hover {
+  border-color: var(--rule-strong);
+  color: var(--ink);
+  background: var(--surface);
+}
+
+#burger {
+  display: none;
+  width: 34px;
+  height: 34px;
+  background: transparent;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  cursor: pointer;
+  position: relative;
+}
+
+#burger i {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  height: 1.5px;
+  background: var(--ink);
+  transition: transform 0.2s, top 0.2s;
+}
+
+#burger i:nth-child(1) { top: 12px; }
+#burger i:nth-child(2) { top: 20px; }
+#burger.open i:nth-child(1) { top: 16px; transform: rotate(45deg); }
+#burger.open i:nth-child(2) { top: 16px; transform: rotate(-45deg); }
+
+#menu {
+  position: fixed;
+  inset: 62px 0 0 0;
+  z-index: 45;
+  background: var(--bg);
+  border-top: 1px solid var(--rule);
+  padding: 24px var(--gutter);
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+#menu.open {
+  display: flex;
+}
+
+#menu a {
+  padding: 13px 0;
+  border-bottom: 1px solid var(--rule);
+  font-family: var(--serif);
+  font-size: 1.45rem;
+}
+
+#menu .tools {
+  margin-top: 22px;
+}
+
+@media (max-width: 820px) {
+  .nav, .hdr-in > .tools { display: none; }
+  #burger { display: block; }
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  padding: clamp(52px, 8vw, 96px) 0 clamp(44px, 6vw, 72px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 0.75fr;
+  gap: clamp(28px, 5vw, 64px);
+  align-items: center;
+}
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+h1 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.5rem, 5.4vw, 4.25rem);
+  line-height: 1.04;
+  letter-spacing: -0.025em;
+  margin-bottom: 20px;
+}
+
+.lead {
+  font-size: clamp(1rem, 1.3vw, 1.1rem);
+  color: var(--ink-2);
+  max-width: 54ch;
+  margin-bottom: 28px;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 9px 16px;
+  border: 1px solid var(--rule-strong);
+  border-radius: 4px;
+  background: transparent;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--ink);
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+
+.btn:hover {
+  background: var(--surface);
+  border-color: var(--ink);
+}
+
+.btn-primary {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: var(--bg);
+}
+
+.btn-primary:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.hero-figure {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.hero-frame {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface);
+  aspect-ratio: 4 / 5;
+}
+
+.hero-frame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-caption {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 0.7rem;
+  color: var(--ink-3);
+}
+
+@media (max-width: 820px) {
+  .hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .hero-frame {
+    aspect-ratio: 16 / 10;
+  }
+}
+
+/* ---------- Facts Strip ---------- */
+.facts-strip {
+  border-bottom: 1px solid var(--rule);
+}
+
+.facts-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.fact {
+  padding: 24px 20px;
+  border-inline-end: 1px solid var(--rule);
+}
+
+.fact:first-child { padding-inline-start: 0; }
+.fact:last-child { border-inline-end: 0; padding-inline-end: 0; }
+
+.fact b {
+  display: block;
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.35rem, 2.4vw, 1.85rem);
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  margin-bottom: 4px;
+}
+
+.fact span {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+@media (max-width: 780px) {
+  .facts-grid { grid-template-columns: repeat(2, 1fr); }
+  .fact { padding: 18px 14px; border-bottom: 1px solid var(--rule); }
+  .fact:first-child { padding-inline-start: 14px; }
+  .fact:nth-child(2n) { border-inline-end: 0; }
+  .fact:nth-last-child(-n+2) { border-bottom: 0; }
+}
+
+/* ---------- Sections ---------- */
+.sec {
+  padding: clamp(56px, 7.5vw, 92px) 0;
+  border-bottom: 1px solid var(--rule);
+}
+
+.sec-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: clamp(24px, 5vw, 64px);
+  align-items: start;
+}
+
+.sec-aside {
+  position: sticky;
+  top: 88px;
+}
+
+.sec-idx {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+h2 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(1.75rem, 3.2vw, 2.45rem);
+  line-height: 1.12;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.prose p {
+  color: var(--ink-2);
+  max-width: 62ch;
+  margin-bottom: 16px;
+}
+
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+.hw-fig {
+  margin-top: 28px;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  max-width: 680px;
+}
+
+.hw-fig img {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+.hw-fig figcaption {
+  padding: 10px 14px;
+  background: var(--card);
+  border-top: 1px solid var(--rule);
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  color: var(--ink-3);
+}
+
+@media (max-width: 860px) {
+  .sec-grid {
+    grid-template-columns: 1fr;
+  }
+  .sec-aside {
+    position: static;
+  }
+}
+
+/* ---------- Projects List (Editorial 2-column rows) ---------- */
+.proj-list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--rule);
+}
+
+.proj-row {
+  display: grid;
+  grid-template-columns: 310px 1fr;
+  gap: clamp(20px, 3.5vw, 40px);
+  padding: 32px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: start;
+}
+
+.proj-media {
+  border: 1px solid var(--rule);
+  border-radius: 4px;
+  overflow: hidden;
+  background: var(--surface);
+  aspect-ratio: 16 / 11;
+}
+
+.proj-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.proj-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.proj-title {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+}
+
+.proj-num {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  color: var(--ink-3);
+}
+
+.proj-row h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: 1.45rem;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.proj-tag {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid var(--rule);
+  border-radius: 3px;
+  color: var(--ink-2);
+  background: var(--card);
+}
+
+.proj-dl {
+  border-top: 1px solid var(--rule);
+}
+
+.proj-dl div {
+  display: grid;
+  grid-template-columns: 84px 1fr;
+  gap: 14px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.9rem;
+}
+
+.proj-dl div:last-child {
+  border-bottom: 0;
+}
+
+.proj-dl dt {
+  font-family: var(--mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding-top: 3px;
+}
+
+.proj-dl dd {
+  color: var(--ink-2);
+}
+
+.proj-dl dd.stat {
+  color: var(--ink);
+  font-weight: 500;
+}
+
+.proj-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 12px;
+}
+
+.proj-links a {
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  color: var(--accent);
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color 0.15s;
+}
+
+.proj-links a:hover {
+  border-color: var(--accent);
+}
+
+@media (max-width: 820px) {
+  .proj-row {
+    grid-template-columns: 1fr;
+    padding: 24px 0;
+  }
+  .proj-dl div {
+    grid-template-columns: 74px 1fr;
+    gap: 10px;
+  }
+}
+
+/* ---------- Skills ---------- */
+.skills-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+@media (max-width: 720px) {
+  .skills-cols {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.skill-col h3 {
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.skill-col ul {
+  list-style: none;
+  border-top: 1px solid var(--rule);
+}
+
+.skill-col li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule);
+  font-size: 0.92rem;
+  color: var(--ink-2);
+}
+
+.method-note {
+  margin-top: 28px;
+  padding: 18px 22px;
+  background: var(--card);
+  border: 1px solid var(--rule);
+  border-inline-start: 3px solid var(--accent);
+  border-radius: 3px;
+  color: var(--ink-2);
+  font-size: 0.92rem;
+  max-width: 68ch;
+}
+
+.method-note b {
+  color: var(--ink);
+  font-weight: 600;
+}
+
+/* ---------- Contact ---------- */
+.contact-sec {
+  padding: clamp(56px, 8vw, 96px) 0;
+}
+
+.contact-box {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 28px;
+  flex-wrap: wrap;
+}
+
+.contact-title {
+  font-family: var(--serif);
+  font-weight: 500;
+  font-size: clamp(2.1rem, 5vw, 3.6rem);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin-bottom: 12px;
+}
+
+.contact-sub {
+  color: var(--ink-2);
+  max-width: 50ch;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  border-top: 1px solid var(--rule);
+  padding: 24px 0;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  color: var(--ink-3);
+}
+
+.foot-in {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.foot-loc {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.foot-loc b {
+  color: var(--ink-2);
+  font-weight: 500;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 </style>
 </head>
 <body>
-<div class="orb o1"></div><div class="orb o2"></div>
-<div id="bar"></div>
 
-<header id="hd">
-  <a class="logo" href="#top" aria-label="YEY"><span id="dock"></span><b id="lw">YEY</b><i></i></a>
-  <nav>
-    <a href="#about" data-i="n_about"></a><a href="#projects" data-i="n_proj"></a><a href="#skills" data-i="n_skills"></a><a href="#contact" data-i="n_contact"></a>
-    <div class="tools"><div class="lang"><button data-l="tr">TR</button><button data-l="en">EN</button><button data-l="de">DE</button><button data-l="ar">AR</button></div><button class="tg" aria-label="Theme">☾</button></div>
-  </nav>
-  <button id="burger" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+<header class="site-header">
+  <div class="wrap hdr-in">
+    <a class="identity" href="#top">
+      <img src="avatar.png" alt="Yunus Emre Yılmaz" width="28" height="28">
+      <span>Yunus Emre Yılmaz</span>
+    </a>
+
+    <nav class="nav" aria-label="Primary">
+      <a href="#about" data-i="n_about">Hakkımda</a>
+      <a href="#projects" data-i="n_proj">Projeler</a>
+      <a href="#skills" data-i="n_skills">Yetkinlikler</a>
+      <a href="#contact" data-i="n_contact">İletişim</a>
+    </nav>
+
+    <div class="tools">
+      <div class="lang" role="group" aria-label="Language">
+        <button type="button" data-l="tr">TR</button>
+        <button type="button" data-l="en">EN</button>
+        <button type="button" data-l="de">DE</button>
+        <button type="button" data-l="ar">AR</button>
+      </div>
+      <button class="tg" type="button" aria-label="Toggle theme">☾</button>
+    </div>
+
+    <button id="burger" type="button" aria-label="Menu" aria-expanded="false"><i></i><i></i></button>
+  </div>
 </header>
+
 <div id="menu">
-  <a href="#about" data-i="n_about"></a><a href="#projects" data-i="n_proj"></a><a href="#skills" data-i="n_skills"></a><a href="#contact" data-i="n_contact"></a>
-  <div class="tools"><div class="lang"><button data-l="tr">TR</button><button data-l="en">EN</button><button data-l="de">DE</button><button data-l="ar">AR</button></div><button class="tg" aria-label="Theme">☾</button></div>
+  <a href="#about" data-i="n_about">Hakkımda</a>
+  <a href="#projects" data-i="n_proj">Projeler</a>
+  <a href="#skills" data-i="n_skills">Yetkinlikler</a>
+  <a href="#contact" data-i="n_contact">İletişim</a>
+  <div class="tools">
+    <div class="lang">
+      <button type="button" data-l="tr">TR</button>
+      <button type="button" data-l="en">EN</button>
+      <button type="button" data-l="de">DE</button>
+      <button type="button" data-l="ar">AR</button>
+    </div>
+    <button class="tg" type="button" aria-label="Toggle theme">☾</button>
+  </div>
 </div>
 
-<section id="hero" class="slide"><span id="top"></span>
-  <img class="hero-bg" src="images/hero.webp" alt="" width="1376" height="768" fetchpriority="high">
-  <div class="hero-in">
-    <div>
-      <div class="ph" id="ph"></div>
-      <div class="role" data-i="role"></div>
-      <h1><span class="ln"><span>Yunus Emre</span></span><span class="ln"><span>Yılmaz</span></span></h1>
-      <p class="lead" data-i="lead"></p>
-      <div class="btns">
-        <a class="btn main" href="mailto:ye.yilmaz@outlook.com">E-mail ↗</a>
-        <a class="btn" href="https://www.linkedin.com/in/yunusemreyl" target="_blank" rel="noopener">LinkedIn ↗</a>
-        <a class="btn" href="https://github.com/yunusemreyl" target="_blank" rel="noopener">GitHub ↗</a>
+<main id="top">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="kicker" data-i="role">ELEKTRİK-ELEKTRONİK MÜHENDİSLİĞİ ÖĞRENCİSİ</div>
+          <h1>Yunus Emre<br>Yılmaz</h1>
+          <p class="lead" data-i="lead"></p>
+          <div class="actions">
+            <a class="btn btn-primary" href="mailto:ye.yilmaz@outlook.com">ye.yilmaz@outlook.com ↗</a>
+            <a class="btn" href="https://github.com/yunusemreyl" target="_blank" rel="noopener">GitHub ↗</a>
+            <a class="btn" href="https://www.linkedin.com/in/yunusemreyl" target="_blank" rel="noopener">LinkedIn ↗</a>
+          </div>
+        </div>
+
+        <figure class="hero-figure">
+          <div class="hero-frame">
+            <img src="images/about.webp" alt="Yunus Emre Yılmaz" width="896" height="1200" fetchpriority="high">
+          </div>
+          <figcaption class="hero-caption">
+            <span>DENİZLİ · BURDUR</span>
+            <span>MAKÜ · EEE</span>
+          </figcaption>
+        </figure>
       </div>
     </div>
+  </section>
+
+  <!-- KEY FACTS -->
+  <section class="facts-strip" aria-label="Highlights">
+    <div class="wrap">
+      <div class="facts-grid">
+        <div class="fact"><b>TEKNOFEST</b><span data-i="st3"></span></div>
+        <div class="fact"><b>TÜBİTAK</b><span data-i="st4"></span></div>
+        <div class="fact"><b>50.000 TL</b><span data-i="st5"></span></div>
+        <div class="fact"><b>4</b><span data-i="st2"></span></div>
+      </div>
     </div>
-  <div class="mq"><div id="mq"></div></div>
-</section>
-<a id="av" href="#top" aria-label="Yunus Emre Yılmaz"><img src="avatar.png" alt="Yunus Emre Yılmaz" width="280" height="280"></a>
+  </section>
 
-<section id="about" class="slide"><div class="wrap">
-  <div class="split">
-    <div class="zoom rv"><img src="images/about.webp" alt="" width="896" height="1200" loading="lazy" decoding="async"></div>
-    <div>
-      <div class="lbl rv"><span data-i="n_about"></span></div>
-      <h2 class="rv" data-i="about_h"></h2>
-      <p class="rv" data-i="about_p1"></p>
-      <p class="rv" data-i="about_p2"></p>
+  <!-- ABOUT -->
+  <section id="about" class="sec">
+    <div class="wrap">
+      <div class="sec-grid">
+        <div class="sec-aside">
+          <div class="sec-idx">01 / <span data-i="n_about"></span></div>
+          <h2 data-i="about_h"></h2>
+        </div>
+
+        <div class="prose">
+          <p data-i="about_p1"></p>
+          <p data-i="about_p2"></p>
+          <figure class="hw-fig">
+            <img src="images/pcb.webp" alt="Embedded hardware &amp; PCB design" width="1264" height="848" loading="lazy" decoding="async">
+            <figcaption>TEKNOFEST · TÜBİTAK · Burdur Mehmet Akif Ersoy Üniversitesi</figcaption>
+          </figure>
+        </div>
+      </div>
     </div>
-  </div>
-</div></section>
+  </section>
 
-<section id="facts" class="slide"><div class="wrap">
-  <div class="zoom banner rv"><img src="images/pcb.webp" alt="" width="1264" height="848" loading="lazy" decoding="async"><p>TEKNOFEST · TÜBİTAK · MAKÜ</p></div>
-  <div class="facts">
-    <div class="card fact rv"><b>TEKNOFEST</b><span data-i="st3"></span></div>
-    <div class="card fact rv"><b>TÜBİTAK</b><span data-i="st4"></span></div>
-    <div class="card fact rv"><b><span class="cnt" data-count="50000" style="font-size:inherit;color:inherit;letter-spacing:inherit;text-transform:none">0</span> TL</b><span data-i="st5"></span></div>
-    <div class="card fact rv"><b class="cnt" data-count="4">0</b><span data-i="st2"></span></div>
-  </div>
-</div></section>
+  <!-- PROJECTS -->
+  <section id="projects" class="sec">
+    <div class="wrap">
+      <div class="sec-grid">
+        <div class="sec-aside">
+          <div class="sec-idx">02 / <span data-i="n_proj"></span></div>
+          <h2 data-i="proj_h"></h2>
+        </div>
 
-<section id="projects" class="slide"><div class="wrap">
-  <div class="lbl rv"><span data-i="n_proj"></span></div>
-  <h2 class="rv" data-i="proj_h"></h2>
-  <div class="grid">
-    <article class="card pcard rv">
-      <div class="zoom pimg"><img src="images/raas.webp" alt="" width="1200" height="896" loading="lazy" decoding="async"><span class="tag">TEKNOFEST · MAKÜ</span><span class="no">01</span></div>
-      <div class="pbody"><h3 data-i="p3n"></h3>
-      <dl><div><dt data-i="lbl_what"></dt><dd data-i="p3"></dd></div><div><dt data-i="lbl_how"></dt><dd class="m" data-i="h3"></dd></div><div><dt data-i="lbl_stat"></dt><dd><span data-i="s_semi"></span> · <span data-i="s_fund"></span></dd></div></dl></div>
-    </article>
-    <article class="card pcard rv">
-      <div class="zoom pimg"><img src="images/drone.webp" alt="" width="1200" height="896" loading="lazy" decoding="async"><span class="tag">TÜBİTAK</span><span class="no">02</span></div>
-      <div class="pbody"><h3 data-i="p5n"></h3>
-      <dl><div><dt data-i="lbl_what"></dt><dd data-i="p5"></dd></div><div><dt data-i="lbl_how"></dt><dd class="m" data-i="h5"></dd></div><div><dt data-i="lbl_stat"></dt><dd data-i="s_cond"></dd></div></dl></div>
-    </article>
-  </div>
-</div></section>
+        <div class="proj-list">
+          <article class="proj-row">
+            <div class="proj-media">
+              <img src="images/raas.webp" alt="RAAS Swarm Seeding Robots" width="1200" height="896" loading="lazy" decoding="async">
+            </div>
+            <div>
+              <div class="proj-head">
+                <div class="proj-title">
+                  <span class="proj-num">01</span>
+                  <h3 data-i="p3n"></h3>
+                </div>
+                <span class="proj-tag">TEKNOFEST · MAKÜ</span>
+              </div>
+              <dl class="proj-dl">
+                <div><dt data-i="lbl_what"></dt><dd data-i="p3"></dd></div>
+                <div><dt data-i="lbl_how"></dt><dd data-i="h3"></dd></div>
+                <div><dt data-i="lbl_stat"></dt><dd class="stat"><span data-i="s_semi"></span> &middot; <span data-i="s_fund"></span></dd></div>
+              </dl>
+            </div>
+          </article>
 
-<section id="projects2" class="slide"><div class="wrap">
-  <div class="lbl rv"><span data-i="n_proj"></span></div>
-  <div class="grid">
-    <article class="card pcard rv">
-      <div class="zoom pimg"><img src="images/omen.webp" alt="" width="1200" height="896" loading="lazy" decoding="async"><span class="tag">LINUX</span><span class="no">03</span></div>
-      <div class="pbody"><h3>OmenSpace</h3>
-      <dl><div><dt data-i="lbl_what"></dt><dd data-i="p1"></dd></div><div><dt data-i="lbl_how"></dt><dd class="m" data-i="h1"></dd></div><div><dt data-i="lbl_stat"></dt><dd data-i="s_sw"></dd></div></dl></div>
-    </article>
-    <article class="card pcard rv">
-      <div class="zoom pimg"><img src="images/alwayson.webp" alt="" width="1200" height="896" loading="lazy" decoding="async"><span class="tag">WINDOWS</span><span class="no">04</span></div>
-      <div class="pbody"><h3>AlwaysOn</h3>
-      <dl><div><dt data-i="lbl_what"></dt><dd data-i="p2"></dd></div><div><dt data-i="lbl_how"></dt><dd class="m" data-i="h2"></dd></div><div><dt data-i="lbl_stat"></dt><dd data-i="s_sw"></dd></div></dl></div>
-    </article>
-  </div>
-</div></section>
+          <article class="proj-row">
+            <div class="proj-media">
+              <img src="images/drone.webp" alt="Precision Agriculture Micro-Drone" width="1200" height="896" loading="lazy" decoding="async">
+            </div>
+            <div>
+              <div class="proj-head">
+                <div class="proj-title">
+                  <span class="proj-num">02</span>
+                  <h3 data-i="p5n"></h3>
+                </div>
+                <span class="proj-tag">TÜBİTAK</span>
+              </div>
+              <dl class="proj-dl">
+                <div><dt data-i="lbl_what"></dt><dd data-i="p5"></dd></div>
+                <div><dt data-i="lbl_how"></dt><dd data-i="h5"></dd></div>
+                <div><dt data-i="lbl_stat"></dt><dd class="stat" data-i="s_cond"></dd></div>
+              </dl>
+            </div>
+          </article>
 
-<section id="skills" class="slide"><div class="wrap">
-  <div class="lbl rv"><span data-i="n_skills"></span></div>
-  <h2 class="rv" data-i="skills_h"></h2>
-  <div class="cols">
-    <div class="card rv"><h4 data-i="k1"></h4><ul><li data-i="l1"></li><li data-i="l2"></li><li data-i="l3"></li></ul></div>
-    <div class="card rv"><h4 data-i="k2"></h4><ul><li data-i="l4"></li><li data-i="l5"></li><li data-i="l6"></li></ul></div>
-    <div class="card rv"><h4 data-i="k3"></h4><ul><li data-i="l7"></li><li data-i="l8"></li><li data-i="l9"></li></ul></div>
-  </div>
-  <div class="note rv" data-i="skills_note"></div>
-</div></section>
+          <article class="proj-row">
+            <div class="proj-media">
+              <img src="images/omen.webp" alt="OMEN Space for Linux" width="1200" height="896" loading="lazy" decoding="async">
+            </div>
+            <div>
+              <div class="proj-head">
+                <div class="proj-title">
+                  <span class="proj-num">03</span>
+                  <h3>OMEN Space</h3>
+                </div>
+                <span class="proj-tag">LINUX · RUST · KERNEL</span>
+              </div>
+              <dl class="proj-dl">
+                <div><dt data-i="lbl_what"></dt><dd data-i="p1"></dd></div>
+                <div><dt data-i="lbl_how"></dt><dd data-i="h1"></dd></div>
+                <div><dt data-i="lbl_stat"></dt><dd class="stat" data-i="s_sw"></dd></div>
+              </dl>
+              <div class="proj-links">
+                <a href="https://omenspace.github.io" target="_blank" rel="noopener">omenspace.github.io ↗</a>
+                <a href="https://github.com/yunusemreyl/omen-space" target="_blank" rel="noopener">github.com/yunusemreyl/omen-space ↗</a>
+              </div>
+            </div>
+          </article>
 
-<section id="contact" class="slide"><div class="wrap">
-  <div class="zoom cpanel rv">
-    <img src="images/hero.webp" alt="" width="1400" height="786" loading="lazy" decoding="async">
-    <div class="lbl"><span data-i="n_contact"></span></div>
-    <div class="big" data-i="c_h"></div>
-    <p class="sub" data-i="c_p"></p>
-    <div class="btns">
-      <a class="btn main" href="mailto:ye.yilmaz@outlook.com">ye.yilmaz@outlook.com ↗</a>
-      <a class="btn" href="https://www.linkedin.com/in/yunusemreyl" target="_blank" rel="noopener">LinkedIn ↗</a>
-      <a class="btn" href="https://github.com/yunusemreyl" target="_blank" rel="noopener">GitHub ↗</a>
+          <article class="proj-row">
+            <div class="proj-media">
+              <img src="images/alwayson.webp" alt="AlwaysOn for Windows" width="1200" height="896" loading="lazy" decoding="async">
+            </div>
+            <div>
+              <div class="proj-head">
+                <div class="proj-title">
+                  <span class="proj-num">04</span>
+                  <h3>AlwaysOn</h3>
+                </div>
+                <span class="proj-tag">WINDOWS</span>
+              </div>
+              <dl class="proj-dl">
+                <div><dt data-i="lbl_what"></dt><dd data-i="p2"></dd></div>
+                <div><dt data-i="lbl_how"></dt><dd data-i="h2"></dd></div>
+                <div><dt data-i="lbl_stat"></dt><dd class="stat" data-i="s_sw"></dd></div>
+              </dl>
+              <div class="proj-links">
+                <a href="https://github.com/yunusemreyl/AlwaysOn" target="_blank" rel="noopener">github.com/yunusemreyl/AlwaysOn ↗</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills" class="sec">
+    <div class="wrap">
+      <div class="sec-grid">
+        <div class="sec-aside">
+          <div class="sec-idx">03 / <span data-i="n_skills"></span></div>
+          <h2 data-i="skills_h"></h2>
+        </div>
+
+        <div>
+          <div class="skills-cols">
+            <div class="skill-col">
+              <h3 data-i="k1"></h3>
+              <ul>
+                <li data-i="l1"></li>
+                <li data-i="l2"></li>
+                <li data-i="l3"></li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <h3 data-i="k2"></h3>
+              <ul>
+                <li data-i="l4"></li>
+                <li data-i="l5"></li>
+                <li data-i="l6"></li>
+              </ul>
+            </div>
+            <div class="skill-col">
+              <h3 data-i="k3"></h3>
+              <ul>
+                <li data-i="l7"></li>
+                <li data-i="l8"></li>
+                <li data-i="l9"></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="method-note" data-i="skills_note"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-sec">
+    <div class="wrap">
+      <div class="contact-box">
+        <div>
+          <div class="sec-idx">04 / <span data-i="n_contact"></span></div>
+          <div class="contact-title" data-i="c_h"></div>
+          <p class="contact-sub" data-i="c_p"></p>
+        </div>
+        <div class="actions">
+          <a class="btn btn-primary" href="mailto:ye.yilmaz@outlook.com">ye.yilmaz@outlook.com ↗</a>
+          <a class="btn" href="https://www.linkedin.com/in/yunusemreyl" target="_blank" rel="noopener">LinkedIn ↗</a>
+          <a class="btn" href="https://github.com/yunusemreyl" target="_blank" rel="noopener">GitHub ↗</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap foot-in">
+    <span>&copy; 2026 YUNUS EMRE YILMAZ</span>
+    <span class="foot-loc"><b>DENİZLİ</b><span>&middot;</span><b>BURDUR</b><span>&middot;</span><span>TÜRKİYE</span></span>
   </div>
-</div>
-<footer><span>© 2026 YUNUS EMRE YILMAZ</span><span class="loc"><svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg><b>DENİZLİ</b><i></i><b>BURDUR</b><i></i><em>TÜRKİYE</em></span></footer>
-</section>
+</footer>
 
 <script>
-const T={
-tr:{lbl_what:"Kapsam",lbl_how:"Yöntem",lbl_stat:"Durum","l1":"Elektronik tasarım","l2":"Gömülü sistemler / ESP32","l3":"Sensörler ve aktüatörler","l4":"Otonom robotik","l5":"İHA / mikro dronlar","l6":"Hassas tarım","l7":"Yapay zeka destekli geliştirme","l8":"Sistem yazılımı","l9":"Test ve doğrulama",
- "h2": "Windows güç yönetimi üzerinden ekran denetimi",
- "h1": "Kernel ve BIOS düzeyinde cihaz iletişimi · Linux kontrol merkezi arayüzü",
- "h5": "ESP32 tabanlı gömülü kontrol · mikro İHA platformu",
- "h3": "Çoklu robot koordinasyonu · otonom ekim mekanizması · gömülü kontrol",
- "s_sw": "Yazılım",
- "n_about": "Hakkımda",
- "n_proj": "Projeler",
- "n_skills": "Yetenekler",
- "n_contact": "İletişim",
- "role": "ELEKTRİK-ELEKTRONİK MÜHENDİSLİĞİ ÖĞRENCİSİ",
- "lead": "Gömülü sistemler, otonom robotik ve sistem yazılımı alanlarında proje geliştiriyorum. Çalışmalarım ulusal yarışmalarda ve üniversite desteğiyle ilerleyen araştırma projelerinde değerlendirildi.",
- "b_proj": "Projeleri İncele",
- "st2": "proje",
- "st3": "yarı final",
- "st4": "şartlı kabul",
- "about_h": "Mühendislik yaklaşımı",
- "about_p1": "Elektrik-Elektronik Mühendisliği eğitimimin yanında donanım ve yazılımı birlikte ele alan sistem projeleri geliştiriyorum. Konsepti, donanım mimarisini ve doğrulama sürecini kendim yönetiyorum.",
- "about_p2": "Yazılım geliştirmede yapay zeka destekli yöntemler kullanıyorum; çıktıları test ederek doğruluyorum. Bitirme projem <b>Sürü Ekim RAAS Ekosistemi</b>, Burdur Mehmet Akif Ersoy Üniversitesi'nin desteklediği bir araştırma-geliştirme çalışmasıdır.",
- "proj_h": "Seçilmiş projeler",
- "s_semi": "Yarı Final",
- "s_cond": "Şartlı Kabul",
- "p1": "Linux için kontrol merkezi yaklaşımını ilk getiren yazılım. HP cihazların kernel ve BIOS düzeyindeki iletişimini çözerek OMEN Gaming Hub'a sorunsuz çalışan bir alternatif sunar.",
- "p2": "Windows'ta kullanıcının isteğine göre ekranın açık kalmasını sağlayan, Caffeine benzeri hafif bir uygulama.",
- "p3n": "RAAS — Sürü Ekim Robotları",
- "p3": "Birlikte çalışan robotlarla otonom tohum ekimi yapan sistem. Burdur Mehmet Akif Ersoy Üniversitesi'nden 50.000 ₺ destek almış olup bitirme projesi olarak geliştirilmektedir.",
- "s_fund": "50.000 ₺ Destek",
- "st5": "üniversite proje desteği",
- "p5n": "Hassas Tarım Mikrodronu",
- "p5": "Hassas tarım uygulamaları için tasarlanan ESP32 tabanlı mikro insansız hava aracı. TÜBİTAK başvurusunda şartlı kabul almış; teknik sorunlar nedeniyle bu aşamada kalmıştır.",
- "skills_h": "Yetkinlikler",
- "k1": "Donanım",
- "k2": "Alanlar",
- "k3": "Yöntem",
- "skills_note": "<b>Geliştirme yaklaşımı:</b> Problemi tanımlayıp donanım mimarisini tasarlıyorum; yazılımı yapay zeka destekli yöntemlerle üretiyor, sonucu test ederek doğruluyorum.",
- "c_h": "Birlikte çalışalım.",
- "c_p": "Proje, işbirliği veya görüşme talepleri için e-posta veya LinkedIn üzerinden ulaşabilirsiniz."
-},
-en:{lbl_what:"Scope",lbl_how:"Method",lbl_stat:"Status","l1":"Electronics design","l2":"Embedded systems / ESP32","l3":"Sensors &amp; actuators","l4":"Autonomous robotics","l5":"UAV / micro-drones","l6":"Precision agriculture","l7":"AI-assisted development","l8":"System software","l9":"Testing &amp; validation",
- "h2": "Screen control via Windows power management",
- "h1": "Kernel- and BIOS-level device communication · Linux control-center interface",
- "h5": "ESP32-based embedded control · micro UAV platform",
- "h3": "Multi-robot coordination · autonomous seeding mechanism · embedded control",
- "s_sw": "Software",
- "n_about": "About",
- "n_proj": "Projects",
- "n_skills": "Skills",
- "n_contact": "Contact",
- "role": "ELECTRICAL & ELECTRONICS ENGINEERING STUDENT",
- "lead": "I develop projects in embedded systems, autonomous robotics and system software. My work has been recognised in national competitions and in university-supported research projects.",
- "b_proj": "View Projects",
- "st2": "projects",
- "st3": "semi-final",
- "st4": "conditional acceptance",
- "about_h": "Engineering approach",
- "about_p1": "Alongside my Electrical & Electronics Engineering studies, I develop system projects that treat hardware and software together. I manage the concept, hardware architecture and verification process myself.",
- "about_p2": "I use AI-assisted methods for software development and validate the output through testing. My graduation project, the <b>Swarm Seeding RAAS Ecosystem</b>, is a research and development effort supported by Burdur Mehmet Akif Ersoy University.",
- "proj_h": "Selected projects",
- "s_semi": "Semi-Finalist",
- "s_cond": "Conditionally Accepted",
- "p1": "The first software to bring the control-center approach to Linux. It resolves kernel- and BIOS-level communication on HP devices, providing a smoothly working alternative to OMEN Gaming Hub.",
- "p2": "A lightweight, Caffeine-style Windows application that keeps the screen awake on demand.",
- "p3n": "RAAS — Swarm Seeding Robots",
- "p3": "A system performing autonomous seed planting with cooperating robots. Funded with 50,000 TRY by Burdur Mehmet Akif Ersoy University and developed as a graduation project.",
- "s_fund": "50,000 TRY Funding",
- "st5": "university project funding",
- "p5n": "Precision Agriculture Micro-Drone",
- "p5": "An ESP32-based micro unmanned aerial vehicle designed for precision agriculture. Received conditional acceptance in its TÜBİTAK application; stalled at that stage due to technical issues.",
- "skills_h": "Capabilities",
- "k1": "Hardware",
- "k2": "Domains",
- "k3": "Method",
- "skills_note": "<b>Development approach:</b> I define the problem and design the hardware architecture; software is produced with AI-assisted methods and validated through testing.",
- "c_h": "Let's work together.",
- "c_p": "For projects, collaboration or enquiries, reach out via email or LinkedIn."
-},
-de:{lbl_what:"Umfang",lbl_how:"Methode",lbl_stat:"Status","l1":"Elektronikdesign","l2":"Embedded Systems / ESP32","l3":"Sensoren &amp; Aktoren","l4":"Autonome Robotik","l5":"UAV / Mikrodrohnen","l6":"Präzisionslandwirtschaft","l7":"KI-gestützte Entwicklung","l8":"Systemsoftware","l9":"Test &amp; Validierung",
- "h2": "Bildschirmsteuerung über die Windows-Energieverwaltung",
- "h1": "Gerätekommunikation auf Kernel- und BIOS-Ebene · Linux-Control-Center-Oberfläche",
- "h5": "ESP32-basierte Embedded-Steuerung · Mikro-UAV-Plattform",
- "h3": "Multi-Roboter-Koordination · autonomer Saatmechanismus · Embedded-Steuerung",
- "s_sw": "Software",
- "n_about": "Über mich",
- "n_proj": "Projekte",
- "n_skills": "Skills",
- "n_contact": "Kontakt",
- "role": "STUDENT DER ELEKTROTECHNIK",
- "lead": "Ich entwickle Projekte in den Bereichen Embedded Systems, autonome Robotik und Systemsoftware. Meine Arbeiten wurden bei nationalen Wettbewerben und in universitätsgeförderten Forschungsprojekten gewürdigt.",
- "b_proj": "Projekte ansehen",
- "st2": "Projekte",
- "st3": "Halbfinale",
- "st4": "bedingte Zusage",
- "about_h": "Ingenieursansatz",
- "about_p1": "Neben meinem Studium der Elektrotechnik entwickle ich Systemprojekte, die Hardware und Software gemeinsam betrachten. Konzept, Hardwarearchitektur und Verifikation verantworte ich selbst.",
- "about_p2": "In der Softwareentwicklung nutze ich KI-gestützte Methoden und validiere die Ergebnisse durch Tests. Mein Abschlussprojekt, das <b>Schwarm-Saat-RAAS-Ökosystem</b>, ist eine von der Burdur Mehmet Akif Ersoy Universität geförderte Forschungs- und Entwicklungsarbeit.",
- "proj_h": "Ausgewählte Projekte",
- "s_semi": "Halbfinale",
- "s_cond": "Bedingt akzeptiert",
- "p1": "Die erste Software, die den Control-Center-Ansatz auf Linux bringt. Sie löst die Kommunikation auf Kernel- und BIOS-Ebene bei HP-Geräten und bietet eine reibungslose Alternative zum OMEN Gaming Hub.",
- "p2": "Eine schlanke Windows-Anwendung im Caffeine-Stil, die den Bildschirm auf Wunsch eingeschaltet hält.",
- "p3n": "RAAS — Schwarm-Saatroboter",
- "p3": "Ein System zur autonomen Aussaat mit zusammenarbeitenden Robotern. Von der Burdur Mehmet Akif Ersoy Universität mit 50.000 TRY gefördert und als Abschlussprojekt entwickelt.",
- "s_fund": "50.000 TRY Förderung",
- "st5": "Uni-Projektförderung",
- "p5n": "Präzisionslandwirtschafts-Mikrodrohne",
- "p5": "Ein ESP32-basiertes unbemanntes Mikro-Luftfahrzeug für die Präzisionslandwirtschaft. Im TÜBİTAK-Antrag bedingt akzeptiert; aufgrund technischer Probleme in dieser Phase stehen geblieben.",
- "skills_h": "Kompetenzen",
- "k1": "Hardware",
- "k2": "Bereiche",
- "k3": "Methode",
- "skills_note": "<b>Entwicklungsansatz:</b> Ich definiere das Problem und entwerfe die Hardwarearchitektur; die Software entsteht KI-gestützt und wird durch Tests validiert.",
- "c_h": "Lass uns zusammenarbeiten.",
- "c_p": "Für Projekte, Kooperationen oder Anfragen erreichst du mich per E-Mail oder LinkedIn."
-},
-ar:{lbl_what:"النطاق",lbl_how:"المنهج",lbl_stat:"الحالة","l1":"تصميم الإلكترونيات","l2":"الأنظمة المدمجة / ESP32","l3":"المستشعرات والمشغّلات","l4":"الروبوتات المستقلة","l5":"الطائرات المسيّرة الصغيرة","l6":"الزراعة الدقيقة","l7":"التطوير بمساعدة الذكاء الاصطناعي","l8":"برمجيات النظم","l9":"الاختبار والتحقق",
- "h2": "التحكم بالشاشة عبر إدارة الطاقة في ويندوز",
- "h1": "تواصل الأجهزة على مستوى النواة والـ BIOS · واجهة مركز تحكم للينكس",
- "h5": "تحكم مدمج مبني على ESP32 · منصة طائرة مسيّرة صغيرة",
- "h3": "تنسيق متعدد الروبوتات · آلية بذر ذاتية · تحكم مدمج",
- "s_sw": "برمجيات",
- "n_about": "عني",
- "n_proj": "المشاريع",
- "n_skills": "المهارات",
- "n_contact": "تواصل",
- "role": "طالب هندسة كهربائية وإلكترونية",
- "lead": "أطوّر مشاريع في الأنظمة المدمجة والروبوتات الذاتية وبرمجيات النظام. حظيت أعمالي بتقدير في مسابقات وطنية ومشاريع بحثية مدعومة من الجامعة.",
- "b_proj": "استعرض المشاريع",
- "st2": "مشاريع",
- "st3": "نصف النهائي",
- "st4": "قبول مشروط",
- "about_h": "المنهج الهندسي",
- "about_p1": "إلى جانب دراستي للهندسة الكهربائية والإلكترونية، أطوّر مشاريع أنظمة تجمع بين العتاد والبرمجيات. أدير بنفسي الفكرة وبنية العتاد وعملية التحقق.",
- "about_p2": "أستخدم أساليب مدعومة بالذكاء الاصطناعي في تطوير البرمجيات وأتحقق من المخرجات عبر الاختبار. مشروع تخرجي <b>منظومة RAAS لزراعة البذور بالأسراب</b> هو عمل بحث وتطوير تدعمه جامعة بوردور مهمت عاكف أرصوي.",
- "proj_h": "مشاريع مختارة",
- "s_semi": "نصف النهائي",
- "s_cond": "قبول مشروط",
- "p1": "أول برنامج يجلب نهج مركز التحكم إلى لينكس. يحلّ التواصل على مستوى النواة والـ BIOS في أجهزة HP ليقدّم بديلاً يعمل بسلاسة لـ OMEN Gaming Hub.",
- "p2": "تطبيق خفيف لويندوز على غرار Caffeine يُبقي الشاشة مضاءة عند الطلب.",
- "p3n": "RAAS — روبوتات البذر الجماعي",
- "p3": "نظام ينفّذ زراعة البذور ذاتياً بروبوتات تعمل معاً. حصل على دعم 50,000 ليرة من جامعة بوردور محمد عاكف أرسوي ويُطوّر كمشروع تخرج.",
- "s_fund": "دعم 50,000 ليرة",
- "st5": "دعم جامعي للمشروع",
- "p5n": "طائرة مسيّرة صغيرة للزراعة الدقيقة",
- "p5": "مركبة جوية صغيرة بدون طيار مبنية على ESP32 للزراعة الدقيقة. حصلت على قبول مشروط في طلب TÜBİTAK وتوقفت عند هذه المرحلة بسبب مشاكل تقنية.",
- "skills_h": "الكفاءات",
- "k1": "العتاد",
- "k2": "المجالات",
- "k3": "المنهج",
- "skills_note": "<b>نهج التطوير:</b> أحدّد المشكلة وأصمم بنية العتاد؛ وتُنتج البرمجيات بأساليب مدعومة بالذكاء الاصطناعي ويجري التحقق منها بالاختبار.",
- "c_h": "لنعمل معاً.",
- "c_p": "للمشاريع أو التعاون أو الاستفسارات، تواصل معي عبر البريد الإلكتروني أو LinkedIn."
-}
+const T = {
+  tr: {
+    lbl_what: "Kapsam", lbl_how: "Yöntem", lbl_stat: "Durum",
+    l1: "Elektronik tasarım", l2: "Gömülü sistemler / ESP32", l3: "Sensörler ve aktüatörler",
+    l4: "Otonom robotik", l5: "İHA / mikro dronlar", l6: "Hassas tarım",
+    l7: "Yapay zeka destekli geliştirme", l8: "Sistem yazılımı", l9: "Test ve doğrulama",
+    h2: "Windows güç yönetimi üzerinden ekran denetimi",
+    h1: "Kernel ve BIOS düzeyinde cihaz iletişimi · Rust & GTK4 kontrol merkezi",
+    h5: "ESP32 tabanlı gömülü kontrol · mikro İHA platformu",
+    h3: "Çoklu robot koordinasyonu · otonom ekim mekanizması · gömülü kontrol",
+    s_sw: "Açık Kaynak Yazılım",
+    n_about: "Hakkımda", n_proj: "Projeler", n_skills: "Yetkinlikler", n_contact: "İletişim",
+    role: "ELEKTRİK-ELEKTRONİK MÜHENDİSLİĞİ ÖĞRENCİSİ",
+    lead: "Gömülü sistemler, otonom robotik ve sistem yazılımı alanlarında proje geliştiriyorum. Çalışmalarım ulusal yarışmalarda ve üniversite desteğiyle ilerleyen araştırma projelerinde değerlendirildi.",
+    st2: "proje", st3: "yarı final", st4: "şartlı kabul", st5: "üniversite proje desteği",
+    about_h: "Mühendislik yaklaşımı",
+    about_p1: "Elektrik-Elektronik Mühendisliği eğitimimin yanında donanım ve yazılımı birlikte ele alan sistem projeleri geliştiriyorum. Konsepti, donanım mimarisini ve doğrulama sürecini kendim yönetiyorum.",
+    about_p2: "Yazılım geliştirmede yapay zeka destekli yöntemler kullanıyorum; çıktıları test ederek doğruluyorum. Bitirme projem <b>Sürü Ekim RAAS Ekosistemi</b>, Burdur Mehmet Akif Ersoy Üniversitesi'nin desteklediği bir araştırma-geliştirme çalışmasıdır.",
+    proj_h: "Seçilmiş projeler",
+    s_semi: "Yarı Final", s_cond: "Şartlı Kabul", s_fund: "50.000 ₺ Destek",
+    p1: "Linux için kontrol merkezi yaklaşımını getiren açık kaynak yazılım. HP OMEN ve Victus cihazların kernel/WMI/BIOS düzeyindeki iletişimini çözerek OMEN Gaming Hub'a yerel bir alternatif sunar.",
+    p2: "Windows'ta kullanıcının isteğine göre ekranın açık kalmasını sağlayan, sıfır yükle çalışan Caffeine benzeri hafif bir yardımcı uygulama.",
+    p3n: "RAAS — Sürü Ekim Robotları",
+    p3: "Birlikte çalışan robotlarla otonom tohum ekimi yapan sistem. Burdur Mehmet Akif Ersoy Üniversitesi'nden 50.000 ₺ destek almış olup bitirme projesi olarak geliştirilmektedir.",
+    p5n: "Hassas Tarım Mikrodronu",
+    p5: "Hassas tarım uygulamaları için tasarlanan ESP32 tabanlı mikro insansız hava aracı. TÜBİTAK başvurusunda şartlı kabul almış; teknik sorunlar nedeniyle bu aşamada kalmıştır.",
+    skills_h: "Yetkinlikler",
+    k1: "Donanım", k2: "Alanlar", k3: "Yöntem",
+    skills_note: "<b>Geliştirme yaklaşımı:</b> Problemi tanımlayıp donanım mimarisini tasarlıyorum; yazılımı yapay zeka destekli yöntemlerle üretiyor, sonucu test ederek doğruluyorum.",
+    c_h: "Birlikte çalışalım.",
+    c_p: "Proje, işbirliği veya görüşme talepleri için e-posta veya LinkedIn üzerinden ulaşabilirsiniz."
+  },
+  en: {
+    lbl_what: "Scope", lbl_how: "Method", lbl_stat: "Status",
+    l1: "Electronics design", l2: "Embedded systems / ESP32", l3: "Sensors &amp; actuators",
+    l4: "Autonomous robotics", l5: "UAV / micro-drones", l6: "Precision agriculture",
+    l7: "AI-assisted development", l8: "System software", l9: "Testing &amp; validation",
+    h2: "Screen control via Windows power management",
+    h1: "Kernel- and BIOS-level device communication · Rust & GTK4 control center",
+    h5: "ESP32-based embedded control · micro UAV platform",
+    h3: "Multi-robot coordination · autonomous seeding mechanism · embedded control",
+    s_sw: "Open-Source Software",
+    n_about: "About", n_proj: "Projects", n_skills: "Capabilities", n_contact: "Contact",
+    role: "ELECTRICAL &amp; ELECTRONICS ENGINEERING STUDENT",
+    lead: "I develop projects in embedded systems, autonomous robotics, and system software. My work has been recognised in national competitions and university-supported research projects.",
+    st2: "projects", st3: "semi-final", st4: "conditional acceptance", st5: "university project funding",
+    about_h: "Engineering approach",
+    about_p1: "Alongside my Electrical &amp; Electronics Engineering studies, I build system projects that treat hardware and software as one unit. I manage the concept, hardware architecture, and verification process myself.",
+    about_p2: "I use AI-assisted workflows for software engineering and validate outputs through real testing. My graduation project, the <b>Swarm Seeding RAAS Ecosystem</b>, is an R&amp;D effort funded by Burdur Mehmet Akif Ersoy University.",
+    proj_h: "Selected projects",
+    s_semi: "Semi-Finalist", s_cond: "Conditionally Accepted", s_fund: "50,000 TRY Funding",
+    p1: "An open-source Linux control center and kernel driver suite for HP OMEN and Victus devices, resolving kernel-, WMI-, and BIOS-level communication as a native alternative to OMEN Gaming Hub.",
+    p2: "A lightweight, zero-overhead Caffeine-style Windows utility that keeps the display awake on demand.",
+    p3n: "RAAS — Swarm Seeding Robots",
+    p3: "An autonomous seed-planting system built around cooperating robots. Funded with 50,000 TRY by Burdur Mehmet Akif Ersoy University and developed as a graduation project.",
+    p5n: "Precision Agriculture Micro-Drone",
+    p5: "An ESP32-based micro unmanned aerial vehicle designed for precision agriculture. Received conditional acceptance in its TÜBİTAK application and concluded at that stage due to technical constraints.",
+    skills_h: "Capabilities",
+    k1: "Hardware", k2: "Domains", k3: "Method",
+    skills_note: "<b>Development approach:</b> I define the problem and design the hardware architecture; software is produced with AI-assisted workflows and verified through hands-on testing.",
+    c_h: "Let's work together.",
+    c_p: "For projects, collaboration, or enquiries, reach out via email or LinkedIn."
+  },
+  de: {
+    lbl_what: "Umfang", lbl_how: "Methode", lbl_stat: "Status",
+    l1: "Elektronikdesign", l2: "Embedded Systems / ESP32", l3: "Sensoren &amp; Aktoren",
+    l4: "Autonome Robotik", l5: "UAV / Mikrodrohnen", l6: "Präzisionslandwirtschaft",
+    l7: "KI-gestützte Entwicklung", l8: "Systemsoftware", l9: "Test &amp; Validierung",
+    h2: "Bildschirmsteuerung über die Windows-Energieverwaltung",
+    h1: "Gerätekommunikation auf Kernel- und BIOS-Ebene · Rust- & GTK4-Steuerzentrale",
+    h5: "ESP32-basierte Embedded-Steuerung · Mikro-UAV-Plattform",
+    h3: "Multi-Roboter-Koordination · autonomer Saatmechanismus · Embedded-Steuerung",
+    s_sw: "Open-Source-Software",
+    n_about: "Über mich", n_proj: "Projekte", n_skills: "Kompetenzen", n_contact: "Kontakt",
+    role: "STUDENT DER ELEKTROTECHNIK",
+    lead: "Ich entwickle Projekte in den Bereichen Embedded Systems, autonome Robotik und Systemsoftware. Meine Arbeiten wurden bei nationalen Wettbewerben und in universitätsgeförderten Forschungsprojekten gewürdigt.",
+    st2: "Projekte", st3: "Halbfinale", st4: "bedingte Zusage", st5: "Uni-Projektförderung",
+    about_h: "Ingenieursansatz",
+    about_p1: "Neben meinem Studium der Elektrotechnik entwickle ich Systemprojekte, die Hardware und Software gemeinsam betrachten. Konzept, Hardwarearchitektur und Verifikation verantworte ich selbst.",
+    about_p2: "In der Softwareentwicklung nutze ich KI-gestützte Methoden und validiere die Ergebnisse durch Tests. Mein Abschlussprojekt, das <b>Schwarm-Saat-RAAS-Ökosystem</b>, ist eine von der Burdur Mehmet Akif Ersoy Universität geförderte Forschungs- und Entwicklungsarbeit.",
+    proj_h: "Ausgewählte Projekte",
+    s_semi: "Halbfinale", s_cond: "Bedingt akzeptiert", s_fund: "50.000 TRY Förderung",
+    p1: "Open-Source-Steuerzentrale und Linux-Kernelsuite für HP-OMEN- und Victus-Geräte. Löst die Kommunikation auf Kernel-, WMI- und BIOS-Ebene als native Alternative zum OMEN Gaming Hub.",
+    p2: "Eine schlanke Windows-Anwendung im Caffeine-Stil, die den Bildschirm auf Wunsch eingeschaltet hält.",
+    p3n: "RAAS — Schwarm-Saatroboter",
+    p3: "Ein System zur autonomen Aussaat mit zusammenarbeitenden Robotern. Von der Burdur Mehmet Akif Ersoy Universität mit 50.000 TRY gefördert und als Abschlussprojekt entwickelt.",
+    p5n: "Präzisionslandwirtschafts-Mikrodrohne",
+    p5: "Ein ESP32-basiertes unbemanntes Mikro-Luftfahrzeug für die Präzisionslandwirtschaft. Im TÜBİTAK-Antrag bedingt akzeptiert; aufgrund technischer Probleme in dieser Phase stehen geblieben.",
+    skills_h: "Kompetenzen",
+    k1: "Hardware", k2: "Bereiche", k3: "Methode",
+    skills_note: "<b>Entwicklungsansatz:</b> Ich definiere das Problem und entwerfe die Hardwarearchitektur; die Software entsteht KI-gestützt und wird durch Tests validiert.",
+    c_h: "Lass uns zusammenarbeiten.",
+    c_p: "Für Projekte, Kooperationen oder Anfragen erreichst du mich per E-Mail oder LinkedIn."
+  },
+  ar: {
+    lbl_what: "النطاق", lbl_how: "المنهج", lbl_stat: "الحالة",
+    l1: "تصميم الإلكترونيات", l2: "الأنظمة المدمجة / ESP32", l3: "المستشعرات والمشغّلات",
+    l4: "الروبوتات المستقلة", l5: "الطائرات المسيّرة الصغيرة", l6: "الزراعة الدقيقة",
+    l7: "التطوير بمساعدة الذكاء الاصطناعي", l8: "برمجيات النظم", l9: "الاختبار والتحقق",
+    h2: "التحكم بالشاشة عبر إدارة الطاقة في ويندوز",
+    h1: "تواصل الأجهزة على مستوى النواة والـ BIOS · واجهة Rust و GTK4 للينكس",
+    h5: "تحكم مدمج مبني على ESP32 · منصة طائرة مسيّرة صغيرة",
+    h3: "تنسيق متعدد الروبوتات · آلية بذر ذاتية · تحكم مدمج",
+    s_sw: "برمجيات مفتوحة المصدر",
+    n_about: "عني", n_proj: "المشاريع", n_skills: "الكفاءات", n_contact: "تواصل",
+    role: "طالب هندسة كهربائية وإلكترونية",
+    lead: "أطوّر مشاريع في الأنظمة المدمجة والروبوتات الذاتية وبرمجيات النظام. حظيت أعمالي بتقدير في مسابقات وطنية ومشاريع بحثية مدعومة من الجامعة.",
+    st2: "مشاريع", st3: "نصف النهائي", st4: "قبول مشروط", st5: "دعم جامعي للمشروع",
+    about_h: "المنهج الهندسي",
+    about_p1: "إلى جانب دراستي للهندسة الكهربائية والإلكترونية، أطوّر مشاريع أنظمة تجمع بين العتاد والبرمجيات. أدير بنفسي الفكرة وبنية العتاد وعملية التحقق.",
+    about_p2: "أستخدم أساليب مدعومة بالذكاء الاصطناعي في تطوير البرمجيات وأتحقق من المخرجات عبر الاختبار. مشروع تخرجي <b>منظومة RAAS لزراعة البذور بالأسراب</b> هو عمل بحث وتطوير تدعمه جامعة بوردور محمد عاكف أرسوي.",
+    proj_h: "مشاريع مختارة",
+    s_semi: "نصف النهائي", s_cond: "قبول مشروط", s_fund: "دعم 50,000 ليرة",
+    p1: "مركز تحكم مفتوح المصدر لنظام لينكس يحلّ التواصل على مستوى النواة والـ BIOS في أجهزة HP OMEN و Victus ليقدّم بديلاً محلياً لـ OMEN Gaming Hub.",
+    p2: "تطبيق خفيف لويندوز على غرار Caffeine يُبقي الشاشة مضاءة عند الطلب.",
+    p3n: "RAAS — روبوتات البذر الجماعي",
+    p3: "نظام ينفّذ زراعة البذور ذاتياً بروبوتات تعمل معاً. حصل على دعم 50,000 ليرة من جامعة بوردور محمد عاكف أرسوي ويُطوّر كمشروع تخرج.",
+    p5n: "طائرة مسيّرة صغيرة للزراعة الدقيقة",
+    p5: "مركبة جوية صغيرة بدون طيار مبنية على ESP32 للزراعة الدقيقة. حصلت على قبول مشروط في طلب TÜBİTAK وتوقفت عند هذه المرحلة بسبب مشاكل تقنية.",
+    skills_h: "الكفاءات",
+    k1: "العتاد", k2: "المجالات", k3: "المنهج",
+    skills_note: "<b>نهج التطوير:</b> أحدّد المشكلة وأصمم بنية العتاد؛ وتُنتج البرمجيات بأساليب مدعومة بالذكاء الاصطناعي ويجري التحقق منها بالاختبار.",
+    c_h: "لنعمل معاً.",
+    c_p: "للمشاريع أو التعاون أو الاستفسارات، تواصل معي عبر البريد الإلكتروني أو LinkedIn."
+  }
 };
 
-let lang=localStorage.getItem('lang')||(navigator.language||'en').slice(0,2);
-if(!T[lang])lang='en';
-function setLang(l){
-  lang=l;localStorage.setItem('lang',l);
-  document.documentElement.lang=l;document.documentElement.dir=l==='ar'?'rtl':'ltr';
-  document.querySelectorAll('[data-i]').forEach(e=>e.innerHTML=T[l][e.dataset.i]||'');
-  document.querySelectorAll('.lang button').forEach(b=>b.classList.toggle('on',b.dataset.l===l));
-  document.title="Yunus Emre Yılmaz";
+let lang = localStorage.getItem('lang') || (navigator.language || 'en').slice(0, 2);
+if (!T[lang]) lang = 'en';
+
+function setLang(l) {
+  lang = T[l] ? l : 'en';
+  localStorage.setItem('lang', lang);
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('[data-i]').forEach(el => {
+    const val = T[lang][el.dataset.i];
+    if (val !== undefined) el.innerHTML = val;
+  });
+  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.l === lang));
 }
-document.querySelectorAll('.lang button').forEach(b=>b.onclick=()=>setLang(b.dataset.l));
+
+document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.l)));
 setLang(lang);
 
-/* theme toggle */
-const tmeta=document.querySelector('meta[name=theme-color]');
-function setTheme(t){document.documentElement.dataset.theme=t;localStorage.setItem('theme',t);
-  document.querySelectorAll('.tg').forEach(b=>b.textContent=t==='dark'?'☀':'☾');
-  tmeta.content=t==='dark'?'#0a0f15':'#f3eee6'}
-document.querySelectorAll('.tg').forEach(b=>b.onclick=()=>setTheme(document.documentElement.dataset.theme==='dark'?'light':'dark'));
-setTheme(document.documentElement.dataset.theme);
-
-/* mobile menu */
-const burger=document.getElementById('burger'),menu=document.getElementById('menu');
-function toggleMenu(f){const o=f===undefined?!menu.classList.contains('open'):f;menu.classList.toggle('open',o);burger.classList.toggle('open',o);burger.setAttribute('aria-expanded',o);document.body.style.overflow=o?'hidden':''}
-burger.onclick=()=>toggleMenu();
-menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>toggleMenu(false)));
-
-/* marquee */
-const words=['EMBEDDED SYSTEMS','AUTONOMOUS ROBOTICS','UAV','SYSTEM SOFTWARE','PRECISION AGRICULTURE','LINUX','ESP32'];
-const one=words.map(w=>'<span>'+w+'</span><span class="d">◆</span>').join('');
-document.getElementById('mq').innerHTML=one.repeat(2)+one.repeat(2);
-
-/* slides: stagger children, mark active slide, dots */
-const slides=[...document.querySelectorAll(".slide")];
-slides.forEach(s=>[...s.querySelectorAll(".rv")].forEach((e,i)=>{if(!e.style.getPropertyValue("--d"))e.style.setProperty("--d",(i*.09)+"s")}));
-const dots=document.createElement("div");dots.id="dots";
-slides.forEach((s,i)=>{const b=document.createElement("button");b.setAttribute("aria-label","Slide "+(i+1));b.onclick=()=>s.scrollIntoView({behavior:"smooth"});dots.appendChild(b)});
-document.body.appendChild(dots);
-const io=new IntersectionObserver(es=>es.forEach(e=>{
-  e.target.classList.toggle("act",e.isIntersecting);
-  if(e.isIntersecting)[...dots.children].forEach((b,i)=>b.classList.toggle("on",slides[i]===e.target));
-}),{rootMargin:"-45% 0px -45% 0px",threshold:0});
-slides.forEach(s=>io.observe(s));
-
-/* counters */
-const co=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;co.unobserve(e.target);
-  const n=+e.target.dataset.count,t0=performance.now();
-  (function f(t){const k=Math.min(1,(t-t0)/1500);e.target.textContent=Math.round(n*(1-Math.pow(1-k,4))).toLocaleString('tr-TR');if(k<1)requestAnimationFrame(f)})(t0)}),{threshold:.6});
-document.querySelectorAll('.cnt').forEach(e=>co.observe(e));
-
-/* progress bar + header border */
-const bar=document.getElementById('bar'),hd=document.getElementById('hd');
-let tick=false;
-function onScroll(){
-  const y=scrollY,max=document.documentElement.scrollHeight-innerHeight;
-  bar.style.transform='scaleX('+(max>0?y/max:0)+')';
-  hd.classList.toggle('s',y>10);
-  tick=false;
+const tmeta = document.querySelector('meta[name="theme-color"]');
+function setTheme(t) {
+  document.documentElement.dataset.theme = t;
+  localStorage.setItem('theme', t);
+  document.querySelectorAll('.tg').forEach(b => b.textContent = t === 'dark' ? '☀' : '☾');
+  if (tmeta) tmeta.content = t === 'dark' ? '#121211' : '#f7f5f0';
 }
-addEventListener('scroll',()=>{if(!tick){tick=true;requestAnimationFrame(onScroll)}},{passive:true});
-onScroll();
+document.querySelectorAll('.tg').forEach(b => b.addEventListener('click', () => {
+  setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
+}));
+setTheme(document.documentElement.dataset.theme || 'light');
 
-/* avatar: flies from hero image corner to header (transform only) */
-const av=document.getElementById("av"),ph=document.getElementById("ph"),dock=document.getElementById("dock"),lw=document.getElementById("lw");
-let M={};
-const ease=t=>t<.5?4*t*t*t:1-Math.pow(-2*t+2,3)/2;
-function measure(){
-  av.style.transform="none";
-  const r=ph.getBoundingClientRect(),d=dock.getBoundingClientRect();
-  M={x0:r.left,y0:r.top+scrollY,x1:d.left,y1:d.top,s:d.width/r.width};
-  av.style.width=r.width+"px";av.style.height=r.width+"px";
-  M.D=Math.max(200,Math.min(innerHeight*.6,M.y0));
-  place();
+const burger = document.getElementById('burger');
+const menu = document.getElementById('menu');
+function toggleMenu(force) {
+  const open = force === undefined ? !menu.classList.contains('open') : force;
+  menu.classList.toggle('open', open);
+  burger.classList.toggle('open', open);
+  burger.setAttribute('aria-expanded', String(open));
+  document.body.style.overflow = open ? 'hidden' : '';
 }
-function place(){
-  const y=scrollY,p=Math.min(1,y/M.D),e=ease(p);
-  const nat=M.y0-y,x=M.x0+(M.x1-M.x0)*e,yy=nat+(M.y1-nat)*e,s=1+(M.s-1)*e;
-  av.style.transform="translate3d("+x+"px,"+yy+"px,0) scale("+s+")";
-  lw.style.opacity=Math.max(0,(p-.6)/.4);
-  lw.style.transform="translate3d("+(-10*(1-p))+"px,0,0)";
-}
-addEventListener("scroll",()=>requestAnimationFrame(place),{passive:true});
-addEventListener("resize",measure);
-addEventListener("load",measure);
-if(document.fonts)document.fonts.ready.then(measure);
-measure();
-
-/* desktop-only card spotlight */
-if(matchMedia('(hover:hover) and (pointer:fine)').matches){
-  document.querySelectorAll('.pcard').forEach(c=>c.addEventListener('pointermove',e=>{
-    const r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');
-  },{passive:true}));
-}
+burger.addEventListener('click', () => toggleMenu());
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggleMenu(false)));
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && menu.classList.contains('open')) toggleMenu(false);
+});
 </script>
 </body>
 </html>
