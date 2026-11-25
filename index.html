@@ -4,592 +4,218 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Yunus Emre Yılmaz</title>
-<meta name="description" content="Yunus Emre Yılmaz — Elektrik-Elektronik Mühendisliği öğrencisi. Gömülü sistemler, robotik ve Linux sistem yazılımları.">
-<meta name="theme-color" content="#fafafa">
+<meta name="description" content="Yunus Emre Yılmaz — Elektrik-Elektronik Mühendisliği öğrencisi. Gömülü sistemler, çoklu mobil robotlar, insansız deniz aracı elektroniği ve Linux donanım araçları.">
+<meta name="theme-color" content="#f3f5f7">
 <link rel="icon" href="avatar.png" type="image/png">
-<script>document.documentElement.dataset.theme=localStorage.getItem('theme')||'light'</script>
-<style>
-:root {
-  --bg: #fafafa;
-  --surface: #f2f2f0;
-  --ink: #18181b;
-  --ink-2: #52525b;
-  --ink-3: #71717a;
-  --line: #e4e4e7;
-  --link: #18181b;
-  --link-u: #a1a1aa;
-  --sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-  --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
-}
-
-[data-theme="dark"] {
-  --bg: #111113;
-  --surface: #1b1b1e;
-  --ink: #ececef;
-  --ink-2: #a1a1aa;
-  --ink-3: #71717a;
-  --line: #27272a;
-  --link: #ececef;
-  --link-u: #52525b;
-}
-
-*, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  background: var(--bg);
-  color: var(--ink);
-  font-family: var(--sans);
-  font-size: 15.5px;
-  line-height: 1.7;
-  -webkit-font-smoothing: antialiased;
-}
-
-a {
-  color: var(--link);
-  text-decoration: underline;
-  text-decoration-color: var(--link-u);
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
-}
-
-a:hover {
-  text-decoration-color: var(--ink);
-}
-
-.page {
-  max-width: 680px;
-  margin: 0 auto;
-  padding: clamp(28px, 6vw, 56px) 22px 72px;
-}
-
-/* Top bar */
-.topbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  padding-bottom: 24px;
-  margin-bottom: 40px;
-  border-bottom: 1px solid var(--line);
-  flex-wrap: wrap;
-}
-
-.nav {
-  display: flex;
-  gap: 18px;
-  font-size: 0.88rem;
-}
-
-.nav a {
-  color: var(--ink-2);
-  text-decoration: none;
-}
-
-.nav a:hover {
-  color: var(--ink);
-  text-decoration: underline;
-}
-
-.controls {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.lang {
-  display: flex;
-  gap: 6px;
-}
-
-.lang button,
-.tg {
-  background: none;
-  border: 0;
-  padding: 2px 4px;
-  font-family: var(--mono);
-  font-size: 0.76rem;
-  color: var(--ink-3);
-  cursor: pointer;
-}
-
-.lang button:hover,
-.tg:hover {
-  color: var(--ink);
-}
-
-.lang button.on {
-  color: var(--ink);
-  font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.tg {
-  border-inline-start: 1px solid var(--line);
-  padding-inline-start: 10px;
-  font-size: 0.85rem;
-}
-
-/* Intro */
-.intro {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  margin-bottom: 24px;
-}
-
-.avatar {
-  width: 72px;
-  height: 72px;
-  border-radius: 50%;
-  object-fit: cover;
-  flex: none;
-  border: 1px solid var(--line);
-}
-
-h1 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: -0.02em;
-  line-height: 1.25;
-}
-
-.subline {
-  font-size: 0.9rem;
-  color: var(--ink-2);
-  margin-top: 2px;
-}
-
-.bio {
-  color: var(--ink-2);
-  margin-bottom: 18px;
-}
-
-.bio p + p {
-  margin-top: 12px;
-}
-
-.bio b {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-.quick-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  font-size: 0.9rem;
-  font-family: var(--mono);
-  margin-top: 20px;
-}
-
-/* Sections */
-section {
-  margin-top: 48px;
-  padding-top: 28px;
-  border-top: 1px solid var(--line);
-}
-
-h2 {
-  font-size: 0.82rem;
-  font-family: var(--mono);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--ink-3);
-  margin-bottom: 20px;
-}
-
-/* Projects */
-.proj {
-  padding: 18px 0;
-  border-top: 1px solid var(--line);
-}
-
-.proj:first-of-type {
-  border-top: 0;
-  padding-top: 0;
-}
-
-.proj-top {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  margin-bottom: 6px;
-}
-
-.proj h3 {
-  font-size: 1.05rem;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-}
-
-.meta {
-  font-family: var(--mono);
-  font-size: 0.76rem;
-  color: var(--ink-3);
-}
-
-.proj p {
-  color: var(--ink-2);
-  font-size: 0.94rem;
-  margin-bottom: 8px;
-}
-
-.proj-detail {
-  font-family: var(--mono);
-  font-size: 0.78rem;
-  color: var(--ink-3);
-}
-
-.proj-links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 8px;
-  font-family: var(--mono);
-  font-size: 0.8rem;
-}
-
-/* Skills / Areas */
-.rows {
-  display: grid;
-  gap: 10px;
-}
-
-.row {
-  display: grid;
-  grid-template-columns: 120px 1fr;
-  gap: 12px;
-  font-size: 0.94rem;
-}
-
-.row dt {
-  font-family: var(--mono);
-  font-size: 0.8rem;
-  color: var(--ink-3);
-  padding-top: 2px;
-}
-
-.row dd {
-  color: var(--ink-2);
-}
-
-.note {
-  margin-top: 18px;
-  font-size: 0.92rem;
-  color: var(--ink-2);
-  padding: 12px 14px;
-  background: var(--surface);
-  border-radius: 4px;
-}
-
-.note b {
-  color: var(--ink);
-  font-weight: 600;
-}
-
-/* Footer */
-footer {
-  margin-top: 56px;
-  padding-top: 20px;
-  border-top: 1px solid var(--line);
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  flex-wrap: wrap;
-  font-family: var(--mono);
-  font-size: 0.76rem;
-  color: var(--ink-3);
-}
-
-@media (max-width: 540px) {
-  .intro {
-    align-items: flex-start;
+<link rel="alternate" media="only screen and (max-width: 768px)" href="mobile.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<script>
+(function () {
+  var params = new URLSearchParams(location.search);
+  if (params.get('view') === 'desktop') sessionStorage.setItem('yey-view', 'desktop');
+  if (params.get('view') === 'mobile') {
+    sessionStorage.setItem('yey-view', 'mobile');
+    location.replace('mobile.html' + location.hash);
+    return;
   }
-  .avatar {
-    width: 58px;
-    height: 58px;
+  var pref = sessionStorage.getItem('yey-view');
+  var isMobile = window.matchMedia('(max-width: 768px)').matches || /Android|iPhone|iPod|IEMobile|Opera Mini/i.test(navigator.userAgent);
+  if (pref !== 'desktop' && isMobile) {
+    location.replace('mobile.html' + location.hash);
+    return;
   }
-  .row {
-    grid-template-columns: 1fr;
-    gap: 2px;
-  }
-}
-</style>
+  var saved = localStorage.getItem('theme');
+  var theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  document.documentElement.dataset.theme = theme;
+})();
+</script>
+<link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
-<div class="page">
-  <header class="topbar">
-    <nav class="nav" aria-label="Navigation">
-      <a href="#projects" data-i="n_proj">Projeler</a>
-      <a href="#work" data-i="n_work">Çalışma Alanları</a>
-      <a href="#contact" data-i="n_contact">İletişim</a>
-    </nav>
-    <div class="controls">
-      <div class="lang" role="group" aria-label="Language">
-        <button type="button" data-l="tr">tr</button>
-        <button type="button" data-l="en">en</button>
-        <button type="button" data-l="de">de</button>
-        <button type="button" data-l="ar">ar</button>
+<a class="skip-link" href="#content" data-i="skip">İçeriğe geç</a>
+
+<div class="shell">
+  <!-- Sticky Identity Rail -->
+  <aside class="rail">
+    <div class="rail-inner">
+      <div class="identity">
+        <img class="avatar" src="avatar.png" alt="Yunus Emre Yılmaz" width="84" height="84">
+        <div class="id-text">
+          <h1>Yunus Emre Yılmaz</h1>
+          <p class="role" data-i="role"></p>
+        </div>
       </div>
-      <button class="tg" type="button" aria-label="Theme">☾</button>
-    </div>
-  </header>
 
-  <main>
-    <div class="intro">
-      <img class="avatar" src="avatar.png" alt="Yunus Emre Yılmaz" width="72" height="72">
-      <div>
-        <h1>Yunus Emre Yılmaz</h1>
-        <div class="subline" data-i="role"></div>
+      <div class="bio">
+        <p data-i="bio1"></p>
+        <p data-i="bio2"></p>
+      </div>
+
+      <nav class="rail-nav" aria-label="Section navigation">
+        <a href="#projects" class="on" data-sec="projects" data-i="n_proj">Projeler</a>
+        <a href="#focus" data-sec="focus" data-i="n_work">Çalışma alanları</a>
+        <a href="#contact" data-sec="contact" data-i="n_contact">İletişim</a>
+      </nav>
+
+      <div class="rail-links">
+        <a href="mailto:ye.yilmaz@outlook.com" class="ext-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <span>ye.yilmaz@outlook.com</span>
+        </a>
+        <a href="https://github.com/yunusemreyl" target="_blank" rel="noopener" class="ext-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+          <span>github.com/yunusemreyl</span>
+        </a>
+        <a href="https://www.linkedin.com/in/yunusemreyl" target="_blank" rel="noopener" class="ext-link">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <span>linkedin.com/in/yunusemreyl</span>
+        </a>
+      </div>
+
+      <div class="rail-controls">
+        <div class="lang" role="group" aria-label="Language">
+          <button type="button" data-l="tr">TR</button>
+          <button type="button" data-l="en">EN</button>
+          <button type="button" data-l="de">DE</button>
+          <button type="button" data-l="ar">AR</button>
+        </div>
+        <div class="rail-actions">
+          <button class="icon-btn theme-btn" type="button" aria-label="Toggle theme">
+            <svg class="ic-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3a7 7 0 0 0 9.79 9.79z"/></svg>
+            <svg class="ic-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+          </button>
+          <a href="mobile.html?view=mobile" class="view-switch" data-i="view_mobile" title="Mobile edition">Mobil</a>
+        </div>
       </div>
     </div>
+  </aside>
 
-    <div class="bio">
-      <p data-i="bio1"></p>
-      <p data-i="bio2"></p>
-    </div>
-
-    <div class="quick-links">
-      <a href="mailto:ye.yilmaz@outlook.com">ye.yilmaz@outlook.com</a>
-      <a href="https://github.com/yunusemreyl" target="_blank" rel="noopener">github.com/yunusemreyl</a>
-      <a href="https://www.linkedin.com/in/yunusemreyl" target="_blank" rel="noopener">linkedin.com/in/yunusemreyl</a>
-    </div>
-
-    <section id="projects">
-      <h2 data-i="n_proj">Projeler</h2>
-
-      <article class="proj">
-        <div class="proj-top">
-          <h3>OMEN Space</h3>
-          <span class="meta" data-i="m_omen"></span>
+  <!-- Main Technical Ledger -->
+  <main id="content" class="content">
+    <section id="projects" class="block">
+      <div class="block-head">
+        <h2 data-i="n_proj">Projeler</h2>
+        <div class="filters" role="tablist" aria-label="Project categories">
+          <button type="button" class="filter-btn on" role="tab" aria-selected="true" data-filter="all" data-i="f_all">Tümü</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="hardware" data-i="f_hw">Robotik &amp; Elektronik</button>
+          <button type="button" class="filter-btn" role="tab" aria-selected="false" data-filter="software" data-i="f_sw">Linux &amp; Yazılım</button>
         </div>
-        <p data-i="p_omen"></p>
-        <div class="proj-detail" data-i="d_omen"></div>
-        <div class="proj-links">
-          <a href="https://omenspace.github.io" target="_blank" rel="noopener">omenspace.github.io</a>
-          <a href="https://github.com/yunusemreyl/omen-space" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </article>
+      </div>
 
-      <article class="proj">
-        <div class="proj-top">
-          <h3 data-i="t_raas"></h3>
-          <span class="meta" data-i="m_raas"></span>
-        </div>
-        <p data-i="p_raas"></p>
-        <div class="proj-detail" data-i="d_raas"></div>
-      </article>
+      <div class="project-ledger">
+        <article class="entry entry-active" data-cat="hardware">
+          <div class="entry-rail">
+            <span class="status-tag active" data-i="st_active">Aktif</span>
+            <span class="entry-period" data-i="m_auto"></span>
+          </div>
+          <div class="entry-body">
+            <h3 data-i="t_auto"></h3>
+            <p data-i="p_auto"></p>
+            <div class="spec-line" data-i="d_auto"></div>
+          </div>
+        </article>
 
-      <article class="proj">
-        <div class="proj-top">
-          <h3 data-i="t_drone"></h3>
-          <span class="meta" data-i="m_drone"></span>
-        </div>
-        <p data-i="p_drone"></p>
-        <div class="proj-detail" data-i="d_drone"></div>
-      </article>
+        <article class="entry entry-active" data-cat="hardware">
+          <div class="entry-rail">
+            <span class="status-tag active" data-i="st_grad">Bitirme</span>
+            <span class="entry-period" data-i="m_raas"></span>
+          </div>
+          <div class="entry-body">
+            <h3 data-i="t_raas"></h3>
+            <p data-i="p_raas"></p>
+            <div class="spec-line" data-i="d_raas"></div>
+          </div>
+        </article>
 
-      <article class="proj">
-        <div class="proj-top">
-          <h3>AlwaysOn</h3>
-          <span class="meta">Windows</span>
-        </div>
-        <p data-i="p_always"></p>
-        <div class="proj-links">
-          <a href="https://github.com/yunusemreyl/AlwaysOn" target="_blank" rel="noopener">GitHub</a>
-        </div>
-      </article>
+        <article class="entry" data-cat="software">
+          <div class="entry-rail">
+            <span class="status-tag" data-i="st_oss">Açık Kaynak</span>
+            <span class="entry-period" data-i="m_omen"></span>
+          </div>
+          <div class="entry-body">
+            <h3><bdi>OMEN Space</bdi></h3>
+            <p data-i="p_omen"></p>
+            <div class="spec-line" data-i="d_omen"></div>
+            <div class="entry-links">
+              <a href="https://omenspace.github.io" target="_blank" rel="noopener">omenspace.github.io</a>
+              <a href="https://github.com/yunusemreyl/omen-space" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry" data-cat="hardware">
+          <div class="entry-rail">
+            <span class="status-tag muted" data-i="st_arch">Tamamlandı</span>
+            <span class="entry-period" data-i="m_drone"></span>
+          </div>
+          <div class="entry-body">
+            <h3 data-i="t_drone"></h3>
+            <p data-i="p_drone"></p>
+            <div class="spec-line" data-i="d_drone"></div>
+          </div>
+        </article>
+
+        <article class="entry" data-cat="software">
+          <div class="entry-rail">
+            <span class="status-tag muted" data-i="st_util">Araç</span>
+            <span class="entry-period"><bdi>Windows</bdi></span>
+          </div>
+          <div class="entry-body">
+            <h3><bdi>AlwaysOn</bdi></h3>
+            <p data-i="p_always"></p>
+            <div class="entry-links">
+              <a href="https://github.com/yunusemreyl/AlwaysOn" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <section id="work">
-      <h2 data-i="n_work">Çalışma Alanları</h2>
-      <dl class="rows">
-        <div class="row"><dt data-i="k1"></dt><dd data-i="v1"></dd></div>
-        <div class="row"><dt data-i="k2"></dt><dd data-i="v2"></dd></div>
-        <div class="row"><dt data-i="k3"></dt><dd data-i="v3"></dd></div>
+    <section id="focus" class="block">
+      <div class="block-head">
+        <h2 data-i="n_work">Çalışma alanları</h2>
+      </div>
+
+      <dl class="matrix">
+        <div class="matrix-row">
+          <dt data-i="k1"></dt>
+          <dd data-i="v1"></dd>
+        </div>
+        <div class="matrix-row">
+          <dt data-i="k2"></dt>
+          <dd data-i="v2"></dd>
+        </div>
+        <div class="matrix-row">
+          <dt data-i="k3"></dt>
+          <dd data-i="v3"></dd>
+        </div>
       </dl>
-      <div class="note" data-i="note"></div>
+
+      <div class="callout" data-i="note"></div>
     </section>
 
-    <section id="contact">
-      <h2 data-i="n_contact">İletişim</h2>
-      <p class="bio" data-i="c_text"></p>
-      <div class="quick-links">
-        <a href="mailto:ye.yilmaz@outlook.com">ye.yilmaz@outlook.com</a>
-        <a href="https://www.linkedin.com/in/yunusemreyl" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://github.com/yunusemreyl" target="_blank" rel="noopener">GitHub</a>
+    <section id="contact" class="block">
+      <div class="block-head">
+        <h2 data-i="n_contact">İletişim</h2>
+      </div>
+      <p class="contact-lead" data-i="c_text"></p>
+      <div class="contact-bar">
+        <a href="mailto:ye.yilmaz@outlook.com" class="btn-primary">ye.yilmaz@outlook.com</a>
+        <a href="https://www.linkedin.com/in/yunusemreyl" target="_blank" rel="noopener" class="btn-ghost">LinkedIn</a>
+        <a href="https://github.com/yunusemreyl" target="_blank" rel="noopener" class="btn-ghost">GitHub</a>
       </div>
     </section>
-  </main>
 
-  <footer>
-    <span>Yunus Emre Yılmaz</span>
-    <span data-i="loc">Denizli / Burdur, Türkiye</span>
-  </footer>
+    <footer class="foot">
+      <span>Yunus Emre Yılmaz</span>
+      <span data-i="loc">Denizli / Burdur, Türkiye</span>
+    </footer>
+  </main>
 </div>
 
-<script>
-const T = {
-  tr: {
-    n_proj: "Projeler",
-    n_work: "Çalışma Alanları",
-    n_contact: "İletişim",
-    role: "Elektrik-Elektronik Mühendisliği öğrencisi · MAKÜ",
-    bio1: "Burdur Mehmet Akif Ersoy Üniversitesi'nde Elektrik-Elektronik Mühendisliği okuyorum. Donanımla doğrudan konuşan gömülü sistemler, otonom robotik ve Linux araçları üzerine çalışıyorum.",
-    bio2: "Bitirme projem olan <b>RAAS Sürü Ekim Robotları</b>, üniversitenin 50.000 ₺ desteğiyle yürüttüğüm bir çalışma. Boş zamanlarımda da Linux kullanan HP OMEN/Victus sahipleri için <b>OMEN Space</b>'i geliştirip bakımını yapıyorum.",
-    m_omen: "Linux · Açık Kaynak",
-    p_omen: "HP OMEN ve Victus bilgisayarlar için Linux çekirdek sürücüsü (hp-wmi / hp-omen-extra) ve GTK4 arayüzü. Fan hızı, güç profilleri, GPU MUX geçişi ve klavye RGB aydınlatmasını kontrol eder.",
-    d_omen: "Rust, C (DKMS), GTK4, D-Bus, ACPI/WMI",
-    t_raas: "RAAS — Sürü Ekim Robotları",
-    m_raas: "TEKNOFEST Yarı Final · 50.000 ₺ MAKÜ Desteği",
-    p_raas: "Birden fazla robotun koordineli biçimde otonom tohum ekimi yapması üzerine bitirme projesi. Mekanik ekim düzeneği, gömülü kontrol ve robotlar arası görev dağılımı üzerine çalışıyoruz.",
-    d_raas: "Gömülü kontrol, sensörler, çoklu robot koordinasyonu",
-    t_drone: "Hassas Tarım Mikrodronu",
-    m_drone: "TÜBİTAK Şartlı Kabul",
-    p_drone: "Hassas tarım denemeleri için tasarlanan ESP32 tabanlı mikro İHA. TÜBİTAK başvurusunda şartlı kabul aldı; donanım ve teknik kısıtlar sebebiyle bu aşamada sonlandırıldı.",
-    d_drone: "ESP32, uçuş kontrolü, mikro İHA",
-    p_always: "Windows'ta ekranın ve sistemin uykuya geçmesini tek tıkla engelleyen, sistem tepsisinde çalışan küçük bir yardımcı program.",
-    k1: "Donanım",
-    v1: "Elektronik tasarım, ESP32, sensörler ve aktüatörler",
-    k2: "Alanlar",
-    v2: "Otonom robotik, mikro İHA, hassas tarım, Linux sistem yazılımları",
-    k3: "Süreç",
-    v3: "Sorun tanımı, donanım mimarisi, yapay zeka destekli yazılım üretimi, gerçek donanımda test",
-    note: "<b>Not:</b> Yazılım tarafında yapay zeka araçlarından aktif olarak yararlanıyorum; mimari kararları, donanım entegrasyonunu ve test/doğrulama süreçlerini kendim yürütüyorum.",
-    c_text: "Projelerle ilgili soru, katkı veya iş birliği için e-posta ya da LinkedIn üzerinden yazabilirsiniz.",
-    loc: "Denizli / Burdur, Türkiye"
-  },
-  en: {
-    n_proj: "Projects",
-    n_work: "Focus Areas",
-    n_contact: "Contact",
-    role: "Electrical & Electronics Engineering student · MAKÜ",
-    bio1: "I study Electrical & Electronics Engineering at Burdur Mehmet Akif Ersoy University. I work on embedded systems, autonomous robotics, and hardware-facing Linux utilities.",
-    bio2: "My graduation project, <b>RAAS Swarm Seeding Robots</b>, is supported by a 50,000 TRY university grant. Outside coursework, I maintain <b>OMEN Space</b>, an open-source hardware control suite for HP OMEN and Victus laptops on Linux.",
-    m_omen: "Linux · Open Source",
-    p_omen: "Linux kernel driver patches (hp-wmi / hp-omen-extra) and a GTK4 desktop interface for HP OMEN and Victus machines. Handles fan control, thermal profiles, GPU MUX switching, power limits, and keyboard RGB.",
-    d_omen: "Rust, C (DKMS), GTK4, D-Bus, ACPI/WMI",
-    t_raas: "RAAS — Swarm Seeding Robots",
-    m_raas: "TEKNOFEST Semi-Final · 50,000 TRY Grant",
-    p_raas: "Graduation project focused on autonomous seed planting with multiple cooperating robots. Covers the seeding mechanism, embedded control, and multi-robot coordination.",
-    d_raas: "Embedded control, sensors, multi-robot coordination",
-    t_drone: "Precision Agriculture Micro-Drone",
-    m_drone: "TÜBİTAK Conditional Acceptance",
-    p_drone: "An ESP32-based micro UAV designed for precision agriculture experiments. Received conditional acceptance from TÜBİTAK and was concluded at that stage due to technical constraints.",
-    d_drone: "ESP32, flight control, micro UAV",
-    p_always: "A small Windows tray utility (similar to Caffeine) that keeps the display awake on demand via Windows power management APIs.",
-    k1: "Hardware",
-    v1: "Electronics design, ESP32, sensors & actuators",
-    k2: "Domains",
-    v2: "Autonomous robotics, micro UAVs, precision agriculture, Linux system tools",
-    k3: "Workflow",
-    v3: "Problem definition, hardware architecture, AI-assisted software development, hardware testing",
-    note: "<b>Note:</b> I use AI tools extensively when writing software; I handle system architecture, hardware integration, and real-device testing myself.",
-    c_text: "For questions, collaboration, or project enquiries, feel free to email me or reach out on LinkedIn.",
-    loc: "Denizli / Burdur, Turkey"
-  },
-  de: {
-    n_proj: "Projekte",
-    n_work: "Schwerpunkte",
-    n_contact: "Kontakt",
-    role: "Student der Elektrotechnik · MAKÜ",
-    bio1: "Ich studiere Elektrotechnik an der Burdur Mehmet Akif Ersoy Universität. Meine Schwerpunkte liegen bei Embedded Systems, autonomer Robotik und hardwarenaher Linux-Software.",
-    bio2: "Mein Abschlussprojekt, <b>RAAS Schwarm-Saatroboter</b>, wird von der Universität mit 50.000 TRY gefördert. Neben dem Studium entwickle und pflege ich <b>OMEN Space</b> für HP-OMEN- und Victus-Geräte unter Linux.",
-    m_omen: "Linux · Open Source",
-    p_omen: "Linux-Kerneltreiber (hp-wmi / hp-omen-extra) und GTK4-Oberfläche für HP OMEN und Victus. Steuert Lüfter, Leistungsprofile, GPU-MUX-Switch, Power-Limits und Tastatur-RGB.",
-    d_omen: "Rust, C (DKMS), GTK4, D-Bus, ACPI/WMI",
-    t_raas: "RAAS — Schwarm-Saatroboter",
-    m_raas: "TEKNOFEST Halbfinale · 50.000 TRY Förderung",
-    p_raas: "Abschlussprojekt zur autonomen Aussaat mit mehreren kooperierenden Robotern — inklusive Saatmechanismus, Embedded-Steuerung und Aufgabenverteilung.",
-    d_raas: "Embedded-Steuerung, Sensorik, Multi-Roboter-Koordination",
-    t_drone: "Präzisionslandwirtschafts-Mikrodrohne",
-    m_drone: "TÜBİTAK Bedingte Zusage",
-    p_drone: "ESP32-basierte Mikro-Drohne für Versuche in der Präzisionslandwirtschaft. Erhielt eine bedingte Zusage bei TÜBİTAK und wurde aufgrund technischer Einschränkungen in dieser Phase beendet.",
-    d_drone: "ESP32, Flugsteuerung, Mikro-UAV",
-    p_always: "Kleines Windows-Tray-Tool (ähnlich Caffeine), das den Bildschirm bei Bedarf über die Windows-Energieverwaltung wachhält.",
-    k1: "Hardware",
-    v1: "Elektronikdesign, ESP32, Sensoren & Aktoren",
-    k2: "Bereiche",
-    v2: "Autonome Robotik, Mikro-UAV, Präzisionslandwirtschaft, Linux-Systemsoftware",
-    k3: "Arbeitsweise",
-    v3: "Problemdefinition, Hardwarearchitektur, KI-gestützte Softwareentwicklung, Tests auf realer Hardware",
-    note: "<b>Hinweis:</b> Für die Softwareentwicklung nutze ich KI-Werkzeuge; Architektur, Hardware-Integration und Tests auf realen Geräten übernehme ich selbst.",
-    c_text: "Für Fragen, Zusammenarbeit oder Projektanfragen am besten per E-Mail oder über LinkedIn melden.",
-    loc: "Denizli / Burdur, Türkei"
-  },
-  ar: {
-    n_proj: "المشاريع",
-    n_work: "مجالات العمل",
-    n_contact: "التواصل",
-    role: "طالب هندسة كهربائية وإلكترونية · MAKÜ",
-    bio1: "أدرس الهندسة الكهربائية والإلكترونية في جامعة بوردور محمد عاكف أرسوي. أعمل على الأنظمة المدمجة والروبوتات المستقلة وأدوات لينكس المرتبطة بالعتاد.",
-    bio2: "مشروع تخرجي <b>روبوتات البذر الجماعي RAAS</b> مدعوم بمنحة جامعية قدرها 50,000 ليرة تركية. وخارج الدراسة أطوّر وأصون مشروع <b>OMEN Space</b> لأجهزة HP OMEN و Victus على نظام لينكس.",
-    m_omen: "لينكس · مفتوح المصدر",
-    p_omen: "تعريفات نواة لينكس (hp-wmi / hp-omen-extra) وواجهة GTK4 لأجهزة HP OMEN و Victus للتحكم بسرعة المراوح وأوضاع الطاقة ومفتاح GPU MUX وإضاءة لوحة المفاتيح.",
-    d_omen: "Rust, C (DKMS), GTK4, D-Bus, ACPI/WMI",
-    t_raas: "RAAS — روبوتات البذر الجماعي",
-    m_raas: "نصف نهائي TEKNOFEST · دعم 50,000 ليرة",
-    p_raas: "مشروع تخرج للزراعة الذاتية باستخدام عدة روبوتات متعاونة، يشمل آلية البذر والتحكم المدمج وتنسيق المهام بين الروبوتات.",
-    d_raas: "التحكم المدمج، المستشعرات، تنسيق الروبوتات المتعددة",
-    t_drone: "طائرة مسيّرة صغيرة للزراعة الدقيقة",
-    m_drone: "قبول مشروط من TÜBİTAK",
-    p_drone: "طائرة مسيّرة صغيرة مبنية على ESP32 لتجارب الزراعة الدقيقة. حصلت على قبول مشروط من TÜBİTAK وتوقفت عند تلك المرحلة بسبب قيود تقنية.",
-    d_drone: "ESP32، التحكم بالطيران، طائرة مسيّرة صغيرة",
-    p_always: "أداة خفيفة لنظام ويندوز تعمل في شريط المهام لإبقاء الشاشة نشطة عند الحاجة عبر واجهة إدارة الطاقة.",
-    k1: "العتاد",
-    v1: "تصميم الإلكترونيات، ESP32، المستشعرات والمشغّلات",
-    k2: "المجالات",
-    v2: "الروبوتات المستقلة، الطائرات المسيّرة الصغيرة، الزراعة الدقيقة، برمجيات لينكس",
-    k3: "أسلوب العمل",
-    v3: "تحديد المشكلة، تصميم العتاد، التطوير بمساعدة الذكاء الاصطناعي، الاختبار على عتاد حقيقي",
-    note: "<b>ملاحظة:</b> أستعين بأدوات الذكاء الاصطناعي في كتابة البرمجيات، بينما أتولى بنفسي التصميم المعماري ودمج العتاد والاختبار الفعلي.",
-    c_text: "للاستفسارات أو التعاون يمكنك التواصل عبر البريد الإلكتروني أو LinkedIn.",
-    loc: "دنيزلي / بوردور، تركيا"
-  }
-};
-
-let lang = localStorage.getItem('lang') || (navigator.language || 'en').slice(0, 2);
-if (!T[lang]) lang = 'en';
-
-function setLang(l) {
-  lang = T[l] ? l : 'en';
-  localStorage.setItem('lang', lang);
-  document.documentElement.lang = lang;
-  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
-  document.querySelectorAll('[data-i]').forEach(el => {
-    const val = T[lang][el.dataset.i];
-    if (val !== undefined) el.innerHTML = val;
-  });
-  document.querySelectorAll('.lang button').forEach(b => b.classList.toggle('on', b.dataset.l === lang));
-}
-
-document.querySelectorAll('.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.l)));
-setLang(lang);
-
-const tmeta = document.querySelector('meta[name="theme-color"]');
-function setTheme(t) {
-  document.documentElement.dataset.theme = t;
-  localStorage.setItem('theme', t);
-  document.querySelectorAll('.tg').forEach(b => b.textContent = t === 'dark' ? '☀' : '☾');
-  if (tmeta) tmeta.content = t === 'dark' ? '#111113' : '#fafafa';
-}
-document.querySelectorAll('.tg').forEach(b => b.addEventListener('click', () => {
-  setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark');
-}));
-setTheme(document.documentElement.dataset.theme || 'light');
-</script>
+<script src="assets/js/main.js"></script>
 </body>
 </html>
